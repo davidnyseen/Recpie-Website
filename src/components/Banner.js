@@ -1,4 +1,5 @@
 const Banner = () => {
+    console.log('ui')
     return ( 0 );
 }
  
