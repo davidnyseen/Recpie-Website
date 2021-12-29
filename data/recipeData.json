@@ -1,0 +1,22 @@
+{
+    "recipes": [
+      {
+        "title": "fish",
+        "ingredients": {
+            "water": "600",
+            "suger": "446"
+          },
+        "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
+        "id": 1
+      },
+      {
+        "title": "apple",
+        "ingredients": {
+            "water": "600",
+            "suger": "446"
+          },
+        "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
+        "id": 2
+      }
+    ]
+  }
