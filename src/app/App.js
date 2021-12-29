@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function App() {
 
-  return (
+return (
     <div className="App">
 <Banner></Banner>
 <HomeBody></HomeBody>
