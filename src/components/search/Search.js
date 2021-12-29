@@ -4,26 +4,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { searchValue } from "./../store/searchReducer";
 
 function Search() {
-    const { searchValue } = useSelector((state) => state.counter);
+    const { value } = useSelector((state) => state.searchReducer);
     const dispatch = useDispatch();
-    const [chat, setChat] = useState("");
+    const [searchResult, setSearchResult] = useState("");
 
     const handleClick = (e) => {
         e.preventDefault();
-        dispatch(searchValue(chat))
-        setChat("")
+        dispatch(searchValue(searchResult))
+        // setSearchResult("")
     }
 
     return (
         <div className='search-form'>
             <form className="" onSubmit={handleClick}>
                 <input className="search-bar" type="text"
-                    value={chat}
-                    onChange={(e) => setChat(e.target.value)} />
+                    value={searchResult}
+                    onChange={(e) => setSearchResult(e.target.value)} />
                 <button className="search-button"
                 >submit</button>
             </form>
-            <h1> The count is: {searchValue}</h1>
+            <h1> The count is: {value}</h1>
         </div>
     );
 }
