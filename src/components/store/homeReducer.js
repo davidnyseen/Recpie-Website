@@ -1,17 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const initialStateValue = [];
+export const getRecipes = createAsyncThunk(
+  "recipes/getRecipes",
+  async (dispatch, getState) => {
+    return await fetch('http://localhost:8000/recipes').then(
+      (res) => res.json()
+    );
+  }
+); 
 
-export const homeReducer = createSlice({
-  name: "recipes",
-  initialState: { value: initialStateValue },
-  reducers: {
-    initializeArray: (state, action) => {
+const recipeSlice = createSlice({
+  name: "recipe",
+  initialState: {
+    recipes: [],
+    status: null,
+  },
+  extraReducers: {
+    [getRecipes.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [getRecipes.fulfilled]: (state, action) => {
+      state.status = "success";
       state.recipes = action.payload;
+    },
+    [getRecipes.rejected]: (state, action) => {
+      state.status = "failed";
     },
   },
 });
 
-export const { initializeArray } = homeReducer.actions;
-
-export default homeReducer.reducer;
+export default recipeSlice.reducer;

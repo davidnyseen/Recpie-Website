@@ -5,6 +5,6 @@ import homeReducer from "./homeReducer";
 export default configureStore({
   reducer: {
     searchReducer: searchReducer,
-    homeReducer: homeReducer
+    recipes: homeReducer
   }
 });
