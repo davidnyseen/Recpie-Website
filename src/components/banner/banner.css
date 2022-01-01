@@ -1,3 +1,53 @@
-.banner{
-    border-bottom: 4px;
+
+Link{
+  color: #6d352a;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+header {
+  border-bottom: 2px solid #6d352a;
+  margin-bottom: 28px;
+  height: 100px;
+  padding: 14px 0;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.4em;
+}
+.main-nav{
+  margin-top: 14px;
+}
+.main-nav ul {
+  display: flex;
+  align-items: stretch;
+  
+}
+a{
+  color: #6d352a;
+}
+.main-nav a {
+  text-decoration: none;
+  padding: 5px 20px;
+  display: block;
+}
+.logo {
+    margin-top:20px;
+}
+
+.main-nav Link:hover{
+  color: #000000;
 }

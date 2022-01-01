@@ -1,18 +1,25 @@
 import { Link } from "react-router-dom";
 import './banner.css'
-import Search from './../search/Search';
 
 export default function App() {
   return (
-    <div className="banner">
-      <h1>welcome</h1>
-      <Search></Search>
-      <nav
+    <header>
+      <div className="container">
 
-      >
-        {/* <Link to="/invoices">Invoices</Link> |{" "}
-        <Link to="/expenses">Expenses</Link> */}
-      </nav>
-    </div>
+        <nav className="main-nav">
+          <ul>
+            
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="about">About</Link></li>
+          <li><Link to="myaccount">my account</Link></li>
+          <li><Link to="categories">categories</Link></li>
+          <li><Link to="create">create recipe</Link></li>
+
+          </ul>
+        </nav>
+
+      </div>
+
+    </header>
   );
 }

@@ -1,0 +1,25 @@
+.search-form input{
+    width: 100%;
+    max-width: 600px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    height: 60px;
+font-size: large;
+border-color: #6d352a;
+}
+.search-button{
+    background-color: #6d352a;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  height: 60px;
+  margin-left: 28px;
+  border-radius: 10%;
+}

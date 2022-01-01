@@ -1,29 +1,15 @@
-.recipe {
-    display: grid;
-    padding-bottom: 3rem;
+.recipe{
+    text-align: center;
+    position:relative;
+    padding: 28px;
+    display: flex;
+    flex-wrap: wrap;
 }
+.recipe-preview{
+    margin: 28px;
+    display: inline;
 
-.recipe-preview {
-    display: block;
 }
-
-.recipe-img {
-    height: 15rem;
-    border-radius: 0.25em;
-    margin-bottom: 1rem;
-  }
-
-.recipe h5 {
-    margin-bottom: 0;
-    margin-top: 0.25rem;
-    line-height: 1;
-    color: var(--grey-700);
-  }
-
-.recipe p {
-    margin-bottom: 0;
-    line-height: 1;
-    color: var(--grey-500);
-    margin-top: 0.5rem;
-    letter-spacing: var(--letterSpacing);
-  }
+.recipe-preview img{
+    width: auto;
+}

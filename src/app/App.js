@@ -1,19 +1,39 @@
-//import React from 'react';
-//import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { render } from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Banner from '../components/banner/Banner';
-import HomeBody from '../components/homeBody/HomeBody'
-import { useDispatch, useSelector } from "react-redux";
-import Home from '../components/home/Home';
+import Home from '../pages/home/Home';
+import MyAccount from "../pages/myAccount/MyAccount";
+import About from "../pages/About";
+import Categories from "../pages/categories/Categories";
+import NotFound from "../pages/notFound/NotFound";
+import SingleRecipe from "../pages/singleRecipe/SingleRecipe";
+import CreateRecipe from "../myAccountComp/createRecipe/CreateRecipe";
 
 export default function App() {
+// fetch("https://api.edamam.com/search?app_id=c08ba36f&app_key=2e5c98200b0dd0211ff9f285f249efb6&q=pizza")
+// .then(res => {
+//   console.log(res.json())
+// });
 
 return (
     <div className="App">
+      <BrowserRouter>
       <Banner></Banner>
-      <div className="content">
-        <Home/>
-      </div>
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="myaccount" element={<MyAccount />} >
+            <Route path="create" element={<SingleRecipe />} />
+            </Route>
+          <Route path="categories" element={<Categories />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="singlerecipe" element={<SingleRecipe />} />
+          <Route path="create" element={<CreateRecipe />} />
+
+
+    </Routes>
+    </BrowserRouter>
     </div>
   );
 }

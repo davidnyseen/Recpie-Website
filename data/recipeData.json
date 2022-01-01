@@ -8,6 +8,7 @@
           },
         "author": "FIRST AUTHOR",
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
+        "mealType": "dinner",
         "id": 1
       },
       {
@@ -20,6 +21,7 @@
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
         "id": 2
       },
+
       {
         "title": "cookie",
         "ingredients": {
@@ -28,8 +30,10 @@
           },
         "author": "THIRD AUTHOR",
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
+        "mealType": "dinner",
         "id": 3
       },
+
       {
         "title": "cake",
         "ingredients": {
@@ -38,8 +42,10 @@
           },
         "author": "THIRD AUTHOR",
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
+        "mealType": "dinner",
         "id": 4
       },
+
       {
         "title": "ice cream",
         "ingredients": {
@@ -48,6 +54,7 @@
           },
         "author": "THIRD AUTHOR",
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
+        "mealType": "dinner",
         "id": 5
       }
     ]

@@ -6,7 +6,7 @@ import { searchValue } from "./../store/searchReducer";
 function Search() {
     const { value } = useSelector((state) => state.searchReducer);
     const dispatch = useDispatch();
-    const [searchResult, setSearchResult] = useState("");
+    const [searchResult, setSearchResult] = useState("search for recipes...");
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -16,12 +16,12 @@ function Search() {
 
     return (
         <div className='search-form'>
-            <form className="" onSubmit={handleClick}>
+            <form className="search-form" onSubmit={handleClick}>
                 <input className="search-bar" type="text"
                     value={searchResult}
                     onChange={(e) => setSearchResult(e.target.value)} />
                 <button className="search-button"
-                >submit</button>
+                >search</button>
             </form>
             <h1> The count is: {value}</h1>
         </div>
