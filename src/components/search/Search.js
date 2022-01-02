@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './search.css'
 import { useDispatch, useSelector } from "react-redux";
-import { searchValue } from "./../store/searchReducer";
+import { searchValue } from "../../store/searchReducer";
 
 function Search() {
     const { value } = useSelector((state) => state.searchReducer);

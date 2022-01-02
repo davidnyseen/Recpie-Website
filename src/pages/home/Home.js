@@ -1,6 +1,6 @@
 import HomeBody from '../../components/homeBody/HomeBody';
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipes } from "../../components/store/homeReducer";
+import { getRecipes } from "../../store/homeReducer";
 import { useState, useEffect } from 'react'
 import './Home.css'
 import Search from '../../components/search/Search'

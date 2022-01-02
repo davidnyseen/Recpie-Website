@@ -1,25 +1,51 @@
+import { useState } from "react";
 import './createRecipe.css'
+
 const CreateRecipe = () => {
-    return ( 
-<div>
-  <form action="/action_page.php">
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name.."></input>
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const [author, setAuthor] = useState('mario');
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name.."></input>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const blog = { title, body, author };
 
-    <label for="country">Country</label>
-    <select id="country" name="country">
-      <option value="australia">Australia</option>
-      <option value="canada">Canada</option>
-      <option value="usa">USA</option>
-    </select>
-  
-    <input type="submit" value="Submit"></input>
-  </form>
-</div>
-     );
+    fetch('http://localhost:8000/usersRecipes/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(blog)
+    })
+  }
+
+  return (
+    <div className="create">
+      <h2>Add a New Recipe</h2>
+      <form onSubmit={handleSubmit}>
+        <label>Recipe Title:</label>
+        <input 
+          type="text" 
+          required 
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <label>Blog body:</label>
+        <textarea
+          required
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+        ></textarea>
+        <label>Blog author:</label>
+        <select
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+        >
+          <option value="mario">mario</option>
+          <option value="yoshi">yoshi</option>
+        </select>
+        <button>Add Blog</button>
+      </form>
+    </div>
+  );
 }
  
 export default CreateRecipe;

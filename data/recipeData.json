@@ -6,7 +6,6 @@
             "water": "600",
             "suger": "446"
           },
-        "author": "FIRST AUTHOR",
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
         "mealType": "dinner",
         "id": 1
@@ -17,7 +16,6 @@
             "water": "600",
             "suger": "446"
           },
-        "author": "SECOND AUTHOR",
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
         "id": 2
       },
@@ -40,7 +38,6 @@
             "water": "600",
             "suger": "446"
           },
-        "author": "THIRD AUTHOR",
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
         "mealType": "dinner",
         "id": 4
@@ -52,7 +49,6 @@
             "water": "600",
             "suger": "446"
           },
-        "author": "THIRD AUTHOR",
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
         "mealType": "dinner",
         "id": 5

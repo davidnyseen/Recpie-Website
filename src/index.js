@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./app/App";
 // import Expenses from "./routes/expenses";
 // import Invoices from "./routes/invoices";
-import  store  from './components/store/store';
+import  store  from './store/store';
 import { Provider } from 'react-redux';
 import { StrictMode } from "react";
 
