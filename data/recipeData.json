@@ -17,6 +17,7 @@
             "suger": "446"
           },
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
+        "mealType": "fruit",
         "id": 2
       },
 
@@ -28,7 +29,7 @@
           },
         "author": "THIRD AUTHOR",
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
-        "mealType": "dinner",
+        "mealType": "desert",
         "id": 3
       },
 
@@ -39,7 +40,7 @@
             "suger": "446"
           },
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
-        "mealType": "dinner",
+        "mealType": "desert",
         "id": 4
       },
 
@@ -50,7 +51,7 @@
             "suger": "446"
           },
         "img": "//images.ctfassets.net/yadj1kx9rmg0/wtrHxeu3zEoEce2MokCSi/cf6f68efdcf625fdc060607df0f3baef/quwowooybuqbl6ntboz3.jpg",
-        "mealType": "dinner",
+        "mealType": "desert",
         "id": 5
       }
     ]

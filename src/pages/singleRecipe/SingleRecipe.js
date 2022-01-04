@@ -1,7 +1,8 @@
-const SingleRecipe = () => {
+const SingleRecipe = ({ recipes} ) => {
     return ( 
-        <div>
-            SingleRecipe
+        <div className="single-recipe">
+            <h1>Single recipe</h1>
+
         </div>
      );
 }

@@ -19,7 +19,7 @@ const CreateRecipe = () => {
 
   return (
     <div className="create">
-      <h2>Add a New Recipe</h2>
+      <h1>Add a New Recipe</h1>
       <form onSubmit={handleSubmit}>
         <label>Recipe Title:</label>
         <input 

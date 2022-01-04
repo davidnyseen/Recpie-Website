@@ -3,8 +3,7 @@ import CreateRecipe from "../../myAccountComp/createRecipe/CreateRecipe";
 const MyAccount = () => {
     return ( 
         <div>
-            <h2>my account</h2>
-            <CreateRecipe></CreateRecipe>
+            <h1>My account</h1>
         </div>
      );
 }

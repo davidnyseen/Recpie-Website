@@ -3,12 +3,6 @@ Link{
   color: #6d352a;
 }
 
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
 header {
   border-bottom: 2px solid #6d352a;
   margin-bottom: 28px;

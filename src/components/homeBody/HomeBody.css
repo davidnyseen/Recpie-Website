@@ -1,12 +1,9 @@
 .recipe{
-    text-align: center;
-    position:relative;
-    padding: 28px;
     display: flex;
     flex-wrap: wrap;
 }
 .recipe-preview{
-    margin: 28px;
+    margin: 15px;
     display: inline;
 
 }

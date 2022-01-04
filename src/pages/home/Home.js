@@ -17,10 +17,10 @@ const Home = () => {
 
   return (
 
-    <div className="container">
+    <div className="container-recipes">
       <Search></Search>
 
-      <h1>recipes</h1>
+      <h1>Recipes</h1>
       {recipes && <HomeBody recipes={recipes} />}
     </div>
   );

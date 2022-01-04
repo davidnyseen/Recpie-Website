@@ -1,7 +1,7 @@
 const Categories = () => {
     return ( 
-        <div>
-            
+        <div className="categories">
+            <h1>Categories</h1>
         </div>
      );
 }

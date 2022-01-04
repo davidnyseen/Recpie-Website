@@ -4,7 +4,7 @@ import './App.css';
 import Banner from '../components/banner/Banner';
 import Home from '../pages/home/Home';
 import MyAccount from "../pages/myAccount/MyAccount";
-import About from "../pages/About";
+import About from "../pages/about/About";
 import Categories from "../pages/categories/Categories";
 import NotFound from "../pages/notFound/NotFound";
 import SingleRecipe from "../pages/singleRecipe/SingleRecipe";
@@ -25,7 +25,7 @@ return (
           <Route path="about" element={<About />} />
           <Route path="myaccount" element={<MyAccount />} >
             <Route path="create" element={<SingleRecipe />} />
-            </Route>
+          </Route>
           <Route path="categories" element={<Categories />} />
           <Route path="*" element={<NotFound />} />
           <Route path="singlerecipe" element={<SingleRecipe />} />

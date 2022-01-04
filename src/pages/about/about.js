@@ -2,7 +2,9 @@ import { dividerClasses } from "@mui/material";
 
 const About = () => {
     return (  
-        <div></div>
+        <div className="about">
+            <h1>About</h1>
+        </div>
     );
 }
  
