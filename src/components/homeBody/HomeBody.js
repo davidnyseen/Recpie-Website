@@ -12,28 +12,28 @@ const HomeBody = ({ recipes }) => {
 
   function goToSinglePage (e) {
     navigate('/singlerecipe');
-
+let i=0;
   }
   return (
     <div className="recipe">
-      {recipes.map(recipe => (
-        <div className="recipe-preview" key={recipe.id} >
-          <Card sx={{ maxWidth: 445 }}>
+      {recipes.map((recipe, i) => (
+        
+        <div className="recipe-preview" key={i} >
+          <Card sx={{ maxWidth: 245 }}>
             <CardActionArea onClick={goToSinglePage}>
               <CardMedia
                 
                 component="img"
                 height="240"
-                image={recipe.img}
+                image={recipe.recipe.image}
                 alt="green iguana"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {recipe.title}
+                  {recipe.recipe.label}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over 6,000
-                  species, ranging across all continents except Antarctica
+                  {recipe.recipe.dishType}
                 </Typography>
               </CardContent>
             </CardActionArea>

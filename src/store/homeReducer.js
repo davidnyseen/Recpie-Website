@@ -2,10 +2,18 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getRecipes = createAsyncThunk(
   "recipes/getRecipes",
-  async (dispatch, getState) => {
-    return await fetch('http://localhost:8000/recipes').then(
-      (res) => res.json()
-    );
+  async (data) => {
+ 
+    console.log("data" + data);
+    return fetch('http://localhost:5000', {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/html' },
+        body: JSON.stringify({
+            data
+        }),
+    })
+        .then((res) => res.json())
+        .then((res) => res.hits)
   }
 ); 
 
@@ -22,11 +30,13 @@ const recipeSlice = createSlice({
     [getRecipes.fulfilled]: (state, action) => {
       state.status = "success";
       state.recipes = action.payload;
+      console.log(state.recipes);
     },
     [getRecipes.rejected]: (state, action) => {
       state.status = "failed";
     },
   },
+  
 });
 
 export default recipeSlice.reducer;
