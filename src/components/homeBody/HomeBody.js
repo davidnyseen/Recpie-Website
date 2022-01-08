@@ -12,7 +12,6 @@ const HomeBody = ({ recipes }) => {
 
   function goToSinglePage (e) {
     navigate('/singlerecipe');
-let i=0;
   }
   return (
     <div className="recipe">
