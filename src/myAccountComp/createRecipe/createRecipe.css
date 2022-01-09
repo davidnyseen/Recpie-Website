@@ -15,7 +15,7 @@
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
-  border: 1px solid #ddd;
+  border: 1px solid #6d352a;
   box-sizing: border-box;
   display: block;
 }
@@ -26,4 +26,21 @@
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+}
+.ingredient{
+  display: flex;
+  margin: 15px;
+}
+.ingredient button{
+max-height:38px ;
+font-size: small;
+margin-left: 20px;
+width: 90px;}
+li{
+  text-align: left;
+}
+input{
+  box-sizing: border-box;
+font-size: large;
+border-color: #6d352a;
 }

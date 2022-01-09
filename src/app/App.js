@@ -11,13 +11,8 @@ import SingleRecipe from "../pages/singleRecipe/SingleRecipe";
 import CreateRecipe from "../myAccountComp/createRecipe/CreateRecipe";
 
 export default function App() {
-// fetch("https://api.edamam.com/search?app_id=c08ba36f&app_key=2e5c98200b0dd0211ff9f285f249efb6&q=pizza")
-// .then(res => {
-//   console.log(res.json())
-// });
-
 return (
-    <div className="App">
+    <div className="app">
       <BrowserRouter>
       <Banner></Banner>
       <Routes>

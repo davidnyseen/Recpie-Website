@@ -2,15 +2,20 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getRecipes = createAsyncThunk(
   "recipes/getRecipes",
-  
-  async (data) => {
-    data = "fallafel";
-    fetch('http://localhost:5000', {  
+  async (value) => {
+        // const { searchReducer } = getState()
+console.log({value})
+    return fetch('http://localhost:5000', {  
       method: 'post',
-      body: JSON.stringify({ "search": "sushi"}),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({value}),
     })
-        .then((res) => res.json())
-        .then((res) => res.hits)
+        .then(res => res.json())
+        .then((res) => (res.hits))
+        
   }
 ); 
 

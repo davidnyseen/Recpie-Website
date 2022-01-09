@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialStateValue = "";
+const initialStateValue = "pizza";
 
 export const searchReducer = createSlice({
   name: "searchReducer",

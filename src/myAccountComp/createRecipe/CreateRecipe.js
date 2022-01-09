@@ -3,49 +3,62 @@ import './createRecipe.css'
 
 const CreateRecipe = () => {
   const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
-  const [author, setAuthor] = useState('mario');
+  const [ingredient, setIngredient] = useState('');
+  const [ingredients, setIngredients] = useState([]);
+  const [mealType, setmealType] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const blog = { title, body, author };
+    //const blog = { title, body, author };
 
-    fetch('http://localhost:8000/usersRecipes/', {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(blog)
-    })
+    // fetch('http://localhost:8000/usersRecipes/', {
+    //   method: 'POST',
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(blog)
+    // })
+  }
+  function addingredient() {
+    setIngredients(ingr => [...ingr, ingredient])
   }
 
   return (
     <div className="create">
       <h1>Add a New Recipe</h1>
       <form onSubmit={handleSubmit}>
-        <label>Recipe Title:</label>
-        <input 
-          type="text" 
-          required 
+        <label>Recipe name:</label>
+        <input
+          type="text"
+          required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label>Blog body:</label>
-        <textarea
-          required
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-        ></textarea>
-        <label>Blog author:</label>
+        <label>ingredients:</label>
+        <div className="ingredient">
+          <input
+          value={ingredient}
+          onChange={(e) => setIngredient(e.target.value)}
+        ></input>
+          <button type="button" onClick={addingredient}>add ingredient</button>
+        </div>
+        <ul>{ingredients && ingredients.map(
+          (ingr) => (<li>{ingr}</li>
+          ))}
+        </ul>
+
+        <label>mealType:</label>
         <select
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
+          value={mealType}
+          onChange={(e) => setmealType(e.target.value)}
         >
-          <option value="mario">mario</option>
-          <option value="yoshi">yoshi</option>
+          <option value="breakfest">breakfest</option>
+          <option value="lunch">lunch</option>
+          <option value="dinner">dinner</option>
+
         </select>
-        <button>Add Blog</button>
+        <button>Add Recipe</button>
       </form>
     </div>
   );
 }
- 
+
 export default CreateRecipe;
