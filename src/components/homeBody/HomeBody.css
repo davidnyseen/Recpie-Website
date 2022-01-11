@@ -10,3 +10,8 @@
 .recipe-preview img{
     width: auto;
 }
+span{
+    visibility: hidden;
+    display: inline;
+
+}

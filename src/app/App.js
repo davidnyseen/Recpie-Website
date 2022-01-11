@@ -23,7 +23,7 @@ return (
           </Route>
           <Route path="categories" element={<Categories />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="singlerecipe" element={<SingleRecipe />} />
+          <Route path="singlerecipe/:singlerecipeid" element={<SingleRecipe />} />
           <Route path="create" element={<CreateRecipe />} />
 
 
