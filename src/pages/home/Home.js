@@ -9,26 +9,33 @@ import Search from '../../components/search/Search'
 
 const Home = () => {
   const dispatch = useDispatch();
-  const {recipes}  = useSelector((state) => state.recipes);
-  const status  = useSelector((state) => state.status);
+  const { recipes } = useSelector((state) => state.recipes);
+  const status = useSelector((state) => state.status);
   const { value } = useSelector((state) => state.searchReducer);
   const [searchResult, setSearchResult] = useState("");
-  
 
-useEffect(() => {
-  dispatch(getRecipes(value));
-}, [value]);
 
-useEffect(() => {
-  console.log("status  ")
+  useEffect(() => {
+    dispatch(getRecipes(value));
+  }, [value]);
 
-},[dispatch])
+  useEffect(() => {
+    console.log("status  ")
+
+  }, [dispatch])
   return (
 
     <div className="container-recipes">
       <Search></Search>
       <h1>Recipes for: {value}</h1>
-      {recipes && <HomeBody recipes={recipes} />}
+
+      <div className="recipe">
+        {recipes && recipes.map((recipe, i) =>
+        (
+          <HomeBody recipe={recipe} key={i} index={i}/>
+        
+        ))}
+      </div>
     </div>
   );
 }

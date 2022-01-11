@@ -1,3 +1,4 @@
+
 .create {
   max-width: 400px;
   margin: 0 auto;
@@ -29,13 +30,14 @@
 }
 .ingredient{
   display: flex;
-  margin: 15px;
+  align-items: center;
 }
 .ingredient button{
 max-height:38px ;
 font-size: small;
 margin-left: 20px;
-width: 90px;}
+width: 150px;
+}
 li{
   text-align: left;
 }

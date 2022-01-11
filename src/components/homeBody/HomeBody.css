@@ -1,7 +1,4 @@
-.recipe{
-    display: flex;
-    flex-wrap: wrap;
-}
+
 .recipe-preview{
     margin: 25px;
     display: inline;
