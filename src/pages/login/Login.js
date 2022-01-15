@@ -19,7 +19,7 @@ useEffect(() => {
 }, [login])
   return (
     <div>
-      <form onSubmit={handleClick}>
+      <form className="form1" onSubmit={handleClick}>
         <h2>Login</h2>
         <label htmlFor="email">Email</label>
         <input type="text" name="email"
