@@ -25,7 +25,6 @@ const recipeSlice = createSlice({
   initialState: {
     recipes: [],
     status: null,
-    singleRecipevalue: {singleRecipevalue: "singleRecipevalue"},
   },
   extraReducers: {
     [getRecipes.pending]: (state, action) => {
@@ -40,12 +39,7 @@ const recipeSlice = createSlice({
       state.status = "failed";
     },
   },
-  reducers: {
-    singleRecipefunc: (state, action) => {
-      state.singleRecipevalue = action.payload;
-    },
-  },
+
   
 });
-export const { singleRecipefunc } = recipeSlice.actions;
 export default recipeSlice.reducer;

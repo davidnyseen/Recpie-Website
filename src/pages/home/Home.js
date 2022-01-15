@@ -19,10 +19,6 @@ const Home = () => {
     dispatch(getRecipes(value));
   }, [value]);
 
-  useEffect(() => {
-    console.log("status  ")
-
-  }, [dispatch])
   return (
 
     <div className="container-recipes">

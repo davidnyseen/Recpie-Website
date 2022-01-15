@@ -9,6 +9,8 @@ import Categories from "../pages/categories/Categories";
 import NotFound from "../pages/notFound/NotFound";
 import SingleRecipe from "../pages/singleRecipe/SingleRecipe";
 import CreateRecipe from "../myAccountComp/createRecipe/CreateRecipe";
+import Login from "../pages/login/Login";
+import Register from "../pages/register/Register";
 
 export default function App() {
 return (
@@ -25,6 +27,8 @@ return (
           <Route path="*" element={<NotFound />} />
           <Route path="singlerecipe/:singlerecipeid" element={<SingleRecipe />} />
           <Route path="create" element={<CreateRecipe />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
 
 
     </Routes>

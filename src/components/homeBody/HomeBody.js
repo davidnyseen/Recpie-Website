@@ -9,7 +9,6 @@ import './HomeBody.css'
 
 const HomeBody = ({ recipe, index }) => {
   let navigate = useNavigate(); // like href
-
   function goToSinglePage() {
     navigate(`/singlerecipe/${index}`);
   }
@@ -32,7 +31,7 @@ const HomeBody = ({ recipe, index }) => {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                {recipe.recipe.label}
+                {(recipe.recipe.label.substring(0, 30))+".."}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 {recipe.recipe.dishType}
