@@ -45,3 +45,11 @@ a{
 .main-nav Link:hover{
   color: #000000;
 }
+.usernamebanner{
+  margin-right: 100px;
+
+}
+.usernamebanner h2{
+  color: #6d352a;
+
+}
