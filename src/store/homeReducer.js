@@ -8,7 +8,6 @@ console.log({value})
     return fetch('http://localhost:5000', {  
       method: 'post',
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({value}),
@@ -24,19 +23,20 @@ const recipeSlice = createSlice({
   name: "recipe",
   initialState: {
     recipes: [],
-    status: null,
+    status: {},
   },
   extraReducers: {
     [getRecipes.pending]: (state, action) => {
-      state.status = "loading";
+      state.status = {loading:"loading"};
+      
     },
     [getRecipes.fulfilled]: (state, action) => {
-      state.status = "success";
+      state.status = {success:"success"};
       state.recipes = action.payload;
       console.log(state.recipes);
     },
     [getRecipes.rejected]: (state, action) => {
-      state.status = "failed";
+      state.status = {failed:"failed"};
     },
   },
 

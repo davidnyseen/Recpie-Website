@@ -19,13 +19,13 @@ const HomeBody = ({ recipe, index }) => {
       
       <div className="recipe-preview" >
         {/* <span>{recipe._links.self.href}</span> */}
-        <Card sx={{ maxWidth: 245 }}>
+        <Card sx={{ maxWidth: 340, height:500 }}>
           <CardActionArea onClick={goToSinglePage}>
 
             <CardMedia
 
               component="img"
-              height="240"
+              height="340"
               image={recipe.recipe.image}
               alt="green iguana"
             />

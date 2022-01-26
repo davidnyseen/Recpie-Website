@@ -10,7 +10,7 @@ import Search from '../../components/search/Search'
 const Home = () => {
   const dispatch = useDispatch();
   const { recipes } = useSelector((state) => state.recipes);
-  const status = useSelector((state) => state.status);
+  // const {status}  = useSelector((state) => state.status);
   const { value } = useSelector((state) => state.searchReducer);
   const [searchResult, setSearchResult] = useState("");
 
@@ -24,6 +24,7 @@ const Home = () => {
     <div className="container-recipes">
       <Search></Search>
       <h1>Recipes for: {value}</h1>
+      {/* {status && <h2>Loading...</h2>} */}
 
       <div className="recipe">
         {recipes && recipes.map((recipe, i) =>

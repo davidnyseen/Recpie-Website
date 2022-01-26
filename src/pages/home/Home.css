@@ -1,8 +1,9 @@
 .container-recipes {
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 1200;
   }
   .recipe{
     display: flex;
     flex-wrap: wrap;
-}
+    justify-content:center;
+align-items: stretch;}

@@ -8,13 +8,18 @@ export const getLogin = createAsyncThunk(
 
     return fetch('http://localhost:5000/login', {  
       method: 'post',
+      credentials: 'include',
+
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+        'Content-Type': 'application/json',
+
+      }, 
       body: JSON.stringify( value ),
     })
         .then(res => res.json())
+        
+        
   }
 ); 
 

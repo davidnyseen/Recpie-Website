@@ -10,7 +10,6 @@ export default function App() {
   const dispatch = useDispatch();
 
   async function  handlelogout(e){
-    console.log('in handlelogout')
     try {
       const res = await fetch('http://localhost:5000/logout')
       const data = await res.json();
@@ -37,14 +36,14 @@ export default function App() {
             <li><Link to="about">About</Link></li>
             {!login.user && <li><Link to="register">register</Link></li>}
             {!login.user && <li><Link to="Login">login</Link></li>}
-            {login.user && <li onClick={handlelogout}><Link to="/" ></Link> logout</li>}
+            {login.user && <li onClick={handlelogout}><Link to="/" >logout</Link></li>}
 
           </ul>
         </nav>
         <div className="usernamebanner">{login.user && <h2>welcome {login.user}</h2>}</div>
 
       </div>
-
+      s
     </header>
   );
 }
