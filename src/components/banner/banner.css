@@ -5,7 +5,7 @@ Link{
 
 header {
   border-bottom: 2px solid #6d352a;
-  margin-bottom: 28px;
+  /* margin-bottom: 28px; */
   height: 100px;
   padding: 14px 0;
 }

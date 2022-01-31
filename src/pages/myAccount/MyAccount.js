@@ -8,7 +8,11 @@ const MyAccount = () => {
     useEffect(() => {
         const func = async () =>{
          try {
-            const res = await fetch('http://localhost:5000/protctedroute')
+            const res = await fetch('http://localhost:5000/protctedroute', 
+            {
+                credentials: 'include',
+
+            })
             const data = await res.json();
             console.log('in handlelogout: = '+data)
 
@@ -17,7 +21,9 @@ const MyAccount = () => {
             }
         }
         catch {
-            console.log('cannt reach protected route')
+            console.log('cannt reach protected route');
+            navigate('/');
+
         }
     }
     func();
@@ -26,12 +32,7 @@ const MyAccount = () => {
     return (
         <div>
             <h1>My account</h1>
-            <div>
-                <div className="card">
-                    <h2>create recipe</h2>
-                    <div><Link to="create">Create recipe</Link></div>
-                </div>
-            </div>
+            
         </div>
     );
 }

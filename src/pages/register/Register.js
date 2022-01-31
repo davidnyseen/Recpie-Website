@@ -24,12 +24,11 @@ const Register = () => {
     dispatch(getLogin({emailRes, passwordRes})) // also sign in after sign up
 
 }
-useEffect(() => {  // did i login?
-if((login.user)){
-  console.log(signup.user.name)
-  navigate('/');
-}
-}, [login])
+// useEffect(() => {  // did i login?
+// if((login.user)){
+//   navigate('/');
+// }
+// }, [login])
 
 useEffect(() => { // if there are  errors
   if (signup.errors) {

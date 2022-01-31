@@ -11,21 +11,6 @@ import { StrictMode } from "react";
 
 import './index.css';
 
-/*const rootElement = document.getElementById("root");
-render(
-  <Provider store={store}>
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      {/* <Route path="expenses" element={<Expenses />} /> }*/
-      //{/* <Route path="invoices" element={<Invoices />} /> }*/
-   /* </Routes>
-  </BrowserRouter>
-  </Provider>,
-
-  rootElement
-);*/
-
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

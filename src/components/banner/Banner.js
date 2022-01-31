@@ -34,7 +34,6 @@ export default function App() {
             <li><Link to="create">Create recipe</Link></li>
             <li><Link to="myaccount">My account</Link></li>
             <li><Link to="about">About</Link></li>
-            {!login.user && <li><Link to="register">register</Link></li>}
             {!login.user && <li><Link to="Login">login</Link></li>}
             {login.user && <li onClick={handlelogout}><Link to="/" >logout</Link></li>}
 
@@ -43,7 +42,7 @@ export default function App() {
         <div className="usernamebanner">{login.user && <h2>welcome {login.user}</h2>}</div>
 
       </div>
-      s
+      
     </header>
   );
 }
