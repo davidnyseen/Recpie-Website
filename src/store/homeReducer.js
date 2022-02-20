@@ -1,22 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import  fetchRecipes  from '../utils/fetchRecipes';
 export const getRecipes = createAsyncThunk(
   "recipes/getRecipes",
   async (value) => {
-        // const { searchReducer } = getState()
-console.log({value})
-    return fetch('http://localhost:5000', {  
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({value}),
-    })
+   return fetchRecipes(value)
         .then(res => res.json())
         .then((res) => (res.hits))
         
   }
 ); 
+
 
 
 const recipeSlice = createSlice({

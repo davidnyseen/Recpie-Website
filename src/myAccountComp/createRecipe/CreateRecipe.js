@@ -3,34 +3,63 @@ import './createRecipe.css'
 import { useForm } from "react-hook-form";
 import FileUploader from '../../components/fileUploader/FileUploader'
 const CreateRecipe = () => {
-  const [file, setFile] = useState({});
-  const formData = new FormData();
-
+  const [file, setFile] = useState();
+  const [imagsFromServer, setImagsFromServer] = useState([]);
   const [recipename, setname] = useState('');
   const [ingredient, setIngredient] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [mealType, setmealType] = useState('breakfest');
   const [directions, setdirections] = useState(' ');
-  let [pictures, setpictures] = useState([]);
   const [preprationtime, setpreprationtime] = useState(' ');
+  const formData = new FormData();
+
 
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const value = JSON.stringify({ recipename, ingredients,
-    mealType, directions, pictures, preprationtime });
+
+    const value = JSON.stringify({
+      recipename, ingredients,
+      mealType, directions, preprationtime
+    });
     fetch('http://localhost:5000/submitNewRecipe', {
-        method: 'post',
-        credentials: 'include',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: value,
-      })
+      method: 'post',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: value,
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
+        } else {
+          throw new Error('Something went wrong submitNewRecipe');
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+
+      formData.append('image', file);
+      // console.log(formData)
+    return fetch('http://localhost:5000/submitNewImage', {
+      method: 'post',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+      },
+      body: formData,
+    })
+      .then(res => res.json)
+      .then((response) => {
+        if (response.ok) {
+          // .then(res => res.json)
+          const imgs = response.json;
+          console.log(imgs)
+          setImagsFromServer([imgs.image, ...imagsFromServer])
+
         } else {
           throw new Error('Something went wrong');
         }
@@ -38,24 +67,23 @@ const CreateRecipe = () => {
       .catch((error) => {
         console.log(error)
       });
-    
-   
+
   }
   function addingredient() {
     setIngredients(ingr => [...ingr, ingredient])
   }
-  function setimage(e) {
-    setFile(e.target.files[0]);
-    formData.append('file', file);
-    setpictures(a=>[...a, file])
-    console.log(formData);
+  const fileSelected = event => {
+    const file = event.target.files[0]
+    setFile(file);
   }
+
+
   return (
     <div className="create">
       <h1>Add a New Recipe</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label className="label">Recipe name:</label>
-        <input
+        <input 
           className="input"
           type="text"
           required
@@ -79,7 +107,7 @@ const CreateRecipe = () => {
         <label className="label">ingredients:</label>
         <div className="ingredient">
           <input
-            className="input"
+            className="input" 
             value={ingredient}
             onChange={(e) => setIngredient(e.target.value)}
           ></input>
@@ -104,20 +132,26 @@ const CreateRecipe = () => {
         {/* add directions */}
         <label className="label" style={{ marginTop: "30px" }}>add directions:</label>
         <textarea rows="5" cols="50" name="comment" form="usrform"
-          value={directions}
+          value={directions} placeholder="pizza"
           onChange={(e) => setdirections(e.target.value)}>
         </textarea>
 
         <label className="picture" >upload a picture of your recipe:</label>
 
-        <input type="file"  multiple="multiple"
+        <input onChange={fileSelected} type="file"
+          multiple="multiple"
           className="picture"
-          id="picture" name="picture"
-          accept="image/png, image/jpeg"
-          onChange={setimage}></input>
-          {/* <FileUploader/> */}
+          id="picture" name="picture" accept="image/*"></input>
+
         <button className="sendrecipe">Add Recipe</button>
       </form>
+      <div>
+        {imagsFromServer.map(image => (
+          <div key={image}>
+            <img src={image}></img>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

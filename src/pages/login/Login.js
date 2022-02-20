@@ -13,7 +13,7 @@ const Login = () => {
     const [passwordRes, setPasswordRes] = useState("");
     const [emailErr, setemailErr] = useState("");
     const [passwordErr, setpasswordErr] = useState("");
-
+    
     const handleClick = (e) => {
         e.preventDefault();
         dispatch(getLogin({ emailRes, passwordRes }))
@@ -48,13 +48,12 @@ const Login = () => {
                             onChange={(e) => setPasswordRes(e.target.value)} />
                         <div className="password error">{passwordErr}</div>
                         <span></span>
-                        {/* <label>Password</label> */}
                     </div>
                     <input type="submit" value="Login" />
 
                     <div className="signup_link" >
                         Not a member?  
-                        <Link to="register" style={{'marginLeft':'15px'}}>signup</Link>
+                        <Link to="/register" style={{'marginLeft':'15px'}}>signup</Link>
                     </div>
                 </form >
             </div>

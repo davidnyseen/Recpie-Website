@@ -10,13 +10,15 @@ import Search from '../../components/search/Search'
 const Home = () => {
   const dispatch = useDispatch();
   const { recipes } = useSelector((state) => state.recipes);
-  // const {status}  = useSelector((state) => state.status);
   const { value } = useSelector((state) => state.searchReducer);
   const [searchResult, setSearchResult] = useState("");
+  const { login } = useSelector((state) => state.login);
 
 
   useEffect(() => {
+    //if(!login){ // getrecipes only if login state is false.
     dispatch(getRecipes(value));
+    //}
   }, [value]);
 
   return (
@@ -24,13 +26,11 @@ const Home = () => {
     <div className="container-recipes">
       <Search></Search>
       <h1>Recipes for: {value}</h1>
-      {/* {status && <h2>Loading...</h2>} */}
 
       <div className="recipe">
         {recipes && recipes.map((recipe, i) =>
         (
           <HomeBody recipe={recipe} key={i} index={i}/>
-        
         ))}
       </div>
     </div>

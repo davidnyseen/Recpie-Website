@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from 'react'
+// import { useState } from 'react'
 
-// import './FileUploader.css'
+// // import './App.css'
 
-function FileUploader() {
- const [images, setimages] = useState([]);
- const [imageurls, setimageurls] = useState([])
+// async function postImage({image, description}) {
+ 
+//   // const result = await axios.post('/images', formData, { headers: {'Content-Type': 'multipart/form-data'}})
+//   // return result.data
+// }
 
- useEffect(() => {
-     if(images.length < 1) return;
-     const newimageurls = [];
-     images.forEach(image => newimageurls.push(URL.createObjectURL(image)));
-     setimageurls(newimageurls)
-     console.log(images)
- }, [images]);
 
- function onImageChange(e) {
-     setimages([...e.target.files])
- }
- return(
-     <div>
-     <input type="file" multiple accept='image/*' onChange={onImageChange}/>
-     {/* { imageurls.map(imageSrc => <img src={imageSrc} />)} */}
-     
-     </div>
- )
-}
+// function App() {
+//  const formData = new FormData(); 
 
-export default FileUploader
+//   const submit = async event => {
+//     postImage({image: file})
+//   }
+
+//   const fileSelected = event => {
+//     const file = event.target.files[0]
+//     formData.append("image", image)
+// }
+
+//   return (
+//     <div className="App">
+//         <input onChange={fileSelected} type="file" accept="image/*"></input>
+//     </div>
+//   );
+// }

@@ -8,7 +8,7 @@ const SingleRecipe = () => {
     return (
         <div className="single-recipe">
             <h1>Single recipe</h1>
-<img src={recipe.recipe.image} alt="" />
+            <img src={recipe.recipe.image} alt="" />
         </div>
 
     );
