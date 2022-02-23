@@ -3,7 +3,6 @@ import './createRecipe.css'
 import { useForm } from "react-hook-form";
 import FileUploader from '../../components/fileUploader/FileUploader'
 const CreateRecipe = () => {
-  const [imgUrl, setImgUrl] = useState()
   const [file, setFile] = useState();
   const [imagsFromServer, setImagsFromServer] = useState([]);
   const [recipename, setname] = useState('');
@@ -13,7 +12,6 @@ const CreateRecipe = () => {
   const [directions, setdirections] = useState(' ');
   const [preprationtime, setpreprationtime] = useState(' ');
   const formData = new FormData();
-
 
 
   
@@ -35,52 +33,48 @@ const CreateRecipe = () => {
       console.log(error)
     });
   }
-  // useEffect(() => {
-  //   const info = JSON.stringify(
-  //     'hi'
-  //   );
-  //   const res = test('http://localhost:5000/test', 
-  //   {
-  //     // 'Accept': 'application/json',
-  //     // 'Content-Type': 'application/json'
-  //   },
-  //   info,
-  //   );
-  // }, [])
   useEffect(() => {
-    console.log('url  :' + imgUrl)
-    if(imgUrl){
-      const value = JSON.stringify({
-        recipename, ingredients, imgUrl,
-        mealType, directions, preprationtime
-      });
-
-      fetch('http://localhost:5000/submitNewRecipe', {
-        method: 'post',
-        credentials: 'include',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: value,
-      })
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw new Error('Something went wrong submitNewRecipe');
-          }
-        })
-        .catch((error) => {
-          console.log(error)
-        });
-    }
-  }, [imgUrl])
+    const info = JSON.stringify(
+      'hi'
+    );
+    const res = test('http://localhost:5000/test', 
+    {
+      // 'Accept': 'application/json',
+      // 'Content-Type': 'application/json'
+    },
+    info,
+    );
+  }, [])
   async function handleSubmit(e) {
     e.preventDefault();
-    formData.append('image', file);
-    
-    const url = await  fetch('http://localhost:5000/submitNewImage', {
+
+    const value = JSON.stringify({
+      recipename, ingredients,
+      mealType, directions, preprationtime
+    });
+    fetch('http://localhost:5000/submitNewRecipe', {
+      method: 'post',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: value,
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Something went wrong submitNewRecipe');
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+
+      formData.append('image', file);
+      // console.log(formData)
+    fetch('http://localhost:5000/submitNewImage', {
       method: 'post',
       credentials: 'include',
       headers: {
@@ -91,13 +85,8 @@ const CreateRecipe = () => {
       .then(res => res.json())
      .then(res => {
       setImagsFromServer([res.imagePath, ...imagsFromServer])
-      return(res.imagePath);
-     })
-     setImgUrl(url);
-
-
-
-
+     }
+      )
 
   }
   function addingredient() {

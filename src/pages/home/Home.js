@@ -17,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     //if(!login){ // getrecipes only if login state is false.
-    dispatch(getRecipes(value));
+    dispatch(getRecipes(value)); // 
     //}
   }, [value]);
 
