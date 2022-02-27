@@ -6,4 +6,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content:center;
-align-items: stretch;}
+    align-items: stretch;
+    color: rgb(13, 49, 82);
+}
