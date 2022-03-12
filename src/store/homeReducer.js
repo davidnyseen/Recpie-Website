@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import  fetchRecipes  from '../utils/fetchRecipes';
+import  fetchPost  from '../utils/fetchPost';
 export const getRecipes = createAsyncThunk(
   "recipes/getRecipes",
   async (value) => {
-   return fetchRecipes(value)
+   return fetchPost('http://localhost:5000', value)
         .then(res => res.json())
         .then((res) => (res.hits))
         

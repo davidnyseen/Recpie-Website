@@ -5,7 +5,7 @@ import {setupServer} from 'msw/node'
 import {render, fireEvent, waitFor, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 // import Fetch from '../fetch'
-import  fetchRecipes  from '../utils/fetchRecipes';
+import  fetchPost  from './fetchPost';
 
 // declare which API requests to mock
 const server = setupServer(
@@ -30,7 +30,10 @@ const server = setupServer(
   afterAll(() => server.close())
   
   test('loads and displays greeting', async () => {
-      const value = 'pizza';
-      const res = await fetchRecipes(value);
-      expect(res.statusCode).to.equal(200)
+     // arrange
+    const value = 'pizza';
+    // act
+      const res = await fetchPost('http://localhost:5000',value);
+    // assert
+      expect(res.status).toEqual(200)
     })

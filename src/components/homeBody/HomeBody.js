@@ -7,13 +7,13 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, ListItem } from '@mui/material';
 import './HomeBody.css'
 
-const HomeBody = ({ recipe, index }) => {
+const HomeBody = ({ index, image, label, dishType }) => {
   let navigate = useNavigate(); // like href
   function goToSinglePage() {
     navigate(`/singlerecipe/${index}`);
   }
-
-
+ // image, label, dishType
+//  recipe.recipe.image, recipe.recipe.label, recipe.recipe.dishType
   return (
     <div className="recipe">
       
@@ -26,15 +26,15 @@ const HomeBody = ({ recipe, index }) => {
 
               component="img"
               height="340"
-              image={recipe.recipe.image}
+              image={image}
               alt="green iguana"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                {(recipe.recipe.label.substring(0, 30))+".."}
+                {(label.substring(0, 30))+".."}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {recipe.recipe.dishType}
+                {dishType}
               </Typography>
             </CardContent>
           </CardActionArea>

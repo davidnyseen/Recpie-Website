@@ -1,41 +1,42 @@
 import CreateRecipe from "../../myAccountComp/createRecipe/CreateRecipe";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./myAccount.css"
+import UseProtectedFetch from '../../customHooks/UseProtectedFetch'
+import fetchGet from '../../utils/fetchGet'
+import "./myAccount.css";
+import MyRecipes from '../../myAccountComp/myRecipes/MyRecipes';
+
 const MyAccount = () => {
+    const [recipes, setRecipes] = useState([])
+    const [log, setlog] = useState(false)
     let navigate = useNavigate(); // like href
     const { login } = useSelector((state) => state.login);
-    useEffect(() => {
-        if (!login.user) {
-            navigate('/');
-        }
-        const func = async () => {
-            try {
-                const res = await fetch('http://localhost:5000/protctedroute',
-                    {
-                        credentials: 'include',
-                    })
-                const data = await res.json();
-                console.log('in handlelogout: = ' + data)
 
-                if (!data) {
-                    navigate('/');
-                }
-            }
-            catch {
-                console.log('cannt reach protected route');
-                navigate('/');
 
-            }
-        }
-        func();
+     UseProtectedFetch(); // this is a protected route
+useEffect(()=>{
+    console.log(recipes);
+},[recipes])
+
+    useEffect(async () => {
+
+        return fetchGet('http://localhost:5000/myAccount')
+            .then(res => res.json())
+            .then((res) => (setRecipes([...res])))
+        
     }, [])
+
 
     return (
         <div>
             <h1>My account</h1>
             <div className="username">{login.user && <h2>welcome {login.user}</h2>}</div>
+            <div><h2>my uploads</h2>
+            </div>
+            <div>
+                <MyRecipes recipes={recipes} />
+            </div>
         </div>
     );
 }

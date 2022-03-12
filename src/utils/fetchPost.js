@@ -1,5 +1,5 @@
-const fetchRecipes = (value) => {
-    return fetch('http://localhost:5000', {  
+const fetchPost = (url, value) => {
+    return fetch(url, {  
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -7,5 +7,4 @@ const fetchRecipes = (value) => {
       body: JSON.stringify({value}),
     })
   };
-
-export default fetchRecipes;
+export default fetchPost;

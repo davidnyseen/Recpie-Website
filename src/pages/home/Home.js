@@ -25,12 +25,14 @@ const Home = () => {
 
     <div className="container-recipes">
       <Search></Search>
-      <h1>Recipes for: {value}</h1>
+      <h1>search results for:  <p style={{ 'color': 'rgb(13, 49, 82)', 'display': 'inline' }}>{value}</p></h1>
 
       <div className="recipe">
         {recipes && recipes.map((recipe, i) =>
         (
-          <HomeBody recipe={recipe} key={i} index={i}/>
+          <HomeBody key={i} index={i}
+            image={recipe.recipe.image} label={recipe.recipe.label} dishType={recipe.recipe.dishType}
+          />
         ))}
       </div>
     </div>

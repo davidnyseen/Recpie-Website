@@ -13,7 +13,10 @@ const Login = () => {
     const [passwordRes, setPasswordRes] = useState("");
     const [emailErr, setemailErr] = useState("");
     const [passwordErr, setpasswordErr] = useState("");
-    
+    useEffect(() => {
+        setemailErr('');
+        setpasswordErr('');
+    }, [emailRes, passwordRes])
     const handleClick = (e) => {
         e.preventDefault();
         dispatch(getLogin({ emailRes, passwordRes }))

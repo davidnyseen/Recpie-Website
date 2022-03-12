@@ -35,18 +35,7 @@ const CreateRecipe = () => {
       console.log(error)
     });
   }
-  // useEffect(() => {
-  //   const info = JSON.stringify(
-  //     'hi'
-  //   );
-  //   const res = test('http://localhost:5000/test', 
-  //   {
-  //     // 'Accept': 'application/json',
-  //     // 'Content-Type': 'application/json'
-  //   },
-  //   info,
-  //   );
-  // }, [])
+
   useEffect(() => {
     console.log('url  :' + imgUrl)
     if(imgUrl){
@@ -176,13 +165,7 @@ const CreateRecipe = () => {
 
         <button className="sendrecipe">Add Recipe</button>
       </form>
-      <div>
-        {imagsFromServer.map(image => (
-          <div key={image}>
-            <img src={image}></img>
-          </div>
-        ))}
-      </div>
+
     </div>
   );
 }
