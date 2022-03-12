@@ -6,7 +6,6 @@ import "./myAccount.css"
 const MyAccount = () => {
     let navigate = useNavigate(); // like href
     const { login } = useSelector((state) => state.login);
-
     useEffect(() => {
         if (!login.user) {
             navigate('/');
@@ -36,7 +35,7 @@ const MyAccount = () => {
     return (
         <div>
             <h1>My account</h1>
-<h2>shalom is smart</h2>
+            <div className="username">{login.user && <h2>welcome {login.user}</h2>}</div>
         </div>
     );
 }
