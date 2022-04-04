@@ -12,19 +12,23 @@ const MyAccount = () => {
     const [log, setlog] = useState(false)
     let navigate = useNavigate(); // like href
     const { login } = useSelector((state) => state.login);
+    let logd = false;
 
+    UseProtectedFetch(); // this is a protected route
+    useEffect(() => {
+        console.log(recipes);
+    }, [recipes])
 
-     UseProtectedFetch(); // this is a protected route
-useEffect(()=>{
-    console.log(recipes);
-},[recipes])
-
-    useEffect(async () => {
-
-        return fetchGet('http://localhost:5000/myAccount')
-            .then(res => res.json())
-            .then((res) => (setRecipes([...res])))
-        
+    useEffect(() => {
+        let cancel = false;
+        fetchGet('http://localhost:5000/myAccount')
+            .then((res) => {
+                if(cancel) return;
+                setRecipes([...res])
+            })
+return()=>{
+    cancel = true
+}
     }, [])
 
 

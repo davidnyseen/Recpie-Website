@@ -20,15 +20,17 @@ const UseProtectedFetch = () => {
                 const data = await res.json();
                 // console.log('in handlelogout: = ' + data)
                 if (!data) {
-                    navigate('/');
+                    navigate('/Login');
+                    return false;
                 }
                 else{
-                    return;
+                    return true;
                 }
             }
             catch {
                 console.log('cannt reach protected route');
                 navigate('/');
+                return false;
             }
         }
 }

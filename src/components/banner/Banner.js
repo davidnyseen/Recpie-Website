@@ -31,7 +31,7 @@ export default function App() {
 
             <li><Link to="categories">Categories</Link></li>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="create">Create recipe</Link></li>
+            {login.user && <li><Link to="create">Create recipe</Link></li>}
             <li><Link to="myaccount">My account</Link></li>
             <li><Link to="about">About</Link></li>
             {!login.user && <li><Link to="Login">login</Link></li>}

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import './createRecipe.css'
 import { useForm } from "react-hook-form";
-import FileUploader from '../../components/fileUploader/FileUploader'
+import FileUploader from '../../components/fileUploader/FileUploader';
+import UseProtectedFetch from '../../customHooks/UseProtectedFetch'
+
+
 const CreateRecipe = () => {
   const [imgUrl, setImgUrl] = useState()
   const [file, setFile] = useState();
@@ -13,6 +16,7 @@ const CreateRecipe = () => {
   const [directions, setdirections] = useState(' ');
   const [preprationtime, setpreprationtime] = useState(' ');
   const formData = new FormData();
+  UseProtectedFetch(); // this is a protected route
 
 
 

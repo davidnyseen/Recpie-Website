@@ -5,8 +5,8 @@ export const getRecipes = createAsyncThunk(
   async (value) => {
    return fetchPost('http://localhost:5000', value)
         .then(res => res.json())
-        .then((res) => (res.hits))
-        
+        .then((res) => (res))
+        .catch(err => (console.log("error getting recipes in home. err msg: "+ err.message)))
   }
 ); 
 
@@ -16,6 +16,7 @@ const recipeSlice = createSlice({
   name: "recipe",
   initialState: {
     recipes: [],
+    recipesDb: [],
     status: {},
   },
   extraReducers: {
@@ -25,8 +26,9 @@ const recipeSlice = createSlice({
     },
     [getRecipes.fulfilled]: (state, action) => {
       state.status = {success:"success"};
-      state.recipes = action.payload;
-      console.log(state.recipes);
+      state.recipes = action.payload.api.hits;
+      state.recipesDb = action.payload.api.recipesDb;
+      // console.log(state.recipes);
     },
     [getRecipes.rejected]: (state, action) => {
       state.status = {failed:"failed"};
