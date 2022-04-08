@@ -17,14 +17,6 @@ const Home = () => {
   const [searchResult, setSearchResult] = useState("");
   const { login } = useSelector((state) => state.login);
 
-  //TEST
-  const recipesUser = useSelector((state) => state.recipes);
-  console.log(recipes);
-  console.log(recipesUser.recipesDb);
-
-  const [fromAPIPopup, setFromAPIPopup] = useState(false);
-  //END TEST
-
 
 
   useEffect(() => {
@@ -52,25 +44,19 @@ const Home = () => {
 
   return (
   <div className="container-recipes"> 
+    {displaySingle ?
+    <div className="single-recipe">
+      {/*<h1>{recipes[currentIndex].recipe.label}</h1>*/}
+      {/*<img src={recipes[currentIndex].recipe.image}></img>*/}
+      <SingleRecipe recipe={recipes[currentIndex].recipe} goBack={setBack}></SingleRecipe>
+
+
+    </div>
+    :
     <div className="all-recipes">
       <Search></Search>
       <h1>search results for:  <p style={{ 'color': 'rgb(13, 49, 82)', 'display': 'inline' }}>{value}</p></h1>
-      <h1>RECIPES FROM USERS</h1>
-      <div className="recipe">
-        {recipesUser.recipesDb && recipesUser.recipesDb.map((recipe, i) =>
-        (
-          <HomeBody key={i} index={i}
-            image={recipe.imgUrl} label={recipe.recipename} 
-            dishType="TEMP TEST" recipe={recipe} 
-            handleClick={setDisplaySingle}
-            updateIndex={setIndex}
-            triggerPopup={togglePopup}
-            fromAPI={false}
-            setFromAPIPopup={setFromAPIPopup}
-          />
-        ))}
-      </div>
-      <h1>RECIPES FROM EDAMAM</h1>
+
       <div className="recipe">
         {recipes && recipes.map((recipe, i) =>
         (
@@ -80,20 +66,10 @@ const Home = () => {
             handleClick={setDisplaySingle}
             updateIndex={setIndex}
             triggerPopup={togglePopup}
-            fromAPI={true}
-            setFromAPIPopup={setFromAPIPopup}
           />
         ))}
       </div>
-      {isOpen && <Popup
-      content={<>{ fromAPIPopup ?
-      <SingleRecipe recipe={recipes[currentIndex].recipe} goBack={setBack} fromAPI={true}></SingleRecipe>
-      :
-      <SingleRecipe recipe={recipesUser.recipesDb[currentIndex]} goBack={setBack} fromAPI={false}></SingleRecipe>}
-      </>}
-      handleClose={togglePopup}
-    />}
-    </div>
+    </div>}
   </div>
   );
 }

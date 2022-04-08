@@ -1,0 +1,79 @@
+.single-recipe {
+    max-width: 1100px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.single-recipe img {
+    border-radius: 8px;
+    float: right;
+    width: 500px;
+    height: 500px;
+}
+
+.single-recipe .top-part {
+    text-align: left;
+    height: 600px;
+}
+
+.single-recipe .top-part .rating{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+.single-recipe .informations {
+    line-height: 50px;
+    margin: auto;
+    max-height: 400px;
+    display: inline-grid;
+    grid-template-columns: auto auto;
+}
+
+.single-recipe .informations .recipeAuthor{
+    padding: 15px;
+}
+
+.single-recipe .informations .type{
+    padding: 15px;
+}
+
+.single-recipe .informations .mealType{
+    padding: 15px;
+}
+
+.single-recipe .informations .prepTime{
+    padding: 15px;
+}
+
+.single-recipe .informations .ingredients{
+    padding: 15px;
+}
+
+.single-recipe .ingredientsDetails {
+    clear: both;
+    margin: auto;
+    text-align: left;
+}
+
+.single-recipe .main-bar {
+    width: 1100px;
+    margin-bottom: 60px;
+}
+
+.single-recipe .little-bar {
+    width: 550px;
+}
+
+.single-recipe .globalInfo {
+    clear: both;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+.single-recipe .globalInfo .column {
+    margin-right: 10px;
+}

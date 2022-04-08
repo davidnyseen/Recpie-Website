@@ -7,34 +7,47 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, ListItem } from '@mui/material';
 import './HomeBody.css'
 
-const HomeBody = ({ index, image, label, dishType }) => {
+const HomeBody = ({ index, image, label, dishType, recipe, handleClick, updateIndex, triggerPopup, fromAPI, setFromAPIPopup }) => {
   let navigate = useNavigate(); // like href
   function goToSinglePage() {
     navigate(`/singlerecipe/${index}`);
   }
  // image, label, dishType
 //  recipe.recipe.image, recipe.recipe.label, recipe.recipe.dishType
-  return (
+  
+//ADDED SINCE 04/04/2022
+
+function updateContent () {
+  handleClick(true);
+  updateIndex(index);
+  triggerPopup();
+  setFromAPIPopup(fromAPI);
+}
+console.log(recipe);
+
+return (
     <div className="recipe">
       
       <div className="recipe-preview" >
         {/* <span>{recipe._links.self.href}</span> */}
-        <Card sx={{ maxWidth: 340, height:500 }}>
-          <CardActionArea onClick={goToSinglePage}>
+        <Card sx={{ maxWidth: 340, height:550 }}>
+          <CardActionArea onClick={updateContent}>
 
             <CardMedia
 
               component="img"
               height="340"
-              image={image}
+              image={recipe.image ? recipe.image : recipe.imgUrl}
               alt="green iguana"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                {(label.substring(0, 30))+".."}
+                {recipe.label ? (recipe.label.substring()) : recipe.recipename}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {dishType}
+                <p>Cuisine type: {recipe.cuisineType ? recipe.cuisineType : ""}</p>
+                <p>Meal type: {recipe.mealType}</p>
+                <p>Author: {recipe.source}</p>
               </Typography>
             </CardContent>
           </CardActionArea>

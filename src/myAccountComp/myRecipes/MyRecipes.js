@@ -8,7 +8,7 @@ const MyRecipes = ({recipes}) => {
           {recipes && recipes.map((recipe, i) =>
           (
             <HomeBody key={i} index={i}
-              image={recipe.imgUrl} label={recipe.recipename} dishType={recipe.mealType}
+              image={recipe.imgUrl} label={recipe.recipename} dishType={recipe.mealType} recipe={recipe}
             />
           ))}
         </div>

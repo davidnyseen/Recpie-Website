@@ -30,7 +30,7 @@ export default function App() {
           <ul>
 
             <li><Link to="categories">Categories</Link></li>
-            <li><Link to="/">Home</Link></li>
+            <li><Link to="/" /*onClick={() => this.window.location.reload()}*/>Home</Link></li>
             {login.user && <li><Link to="create">Create recipe</Link></li>}
             <li><Link to="myaccount">My account</Link></li>
             <li><Link to="about">About</Link></li>
