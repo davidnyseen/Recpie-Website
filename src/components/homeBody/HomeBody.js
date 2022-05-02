@@ -6,6 +6,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, ListItem } from '@mui/material';
 import './HomeBody.css'
+import Rating from "../Rating/Rating"
+import { FaStar } from "react-icons/fa";
 
 const HomeBody = ({ index, image, label, dishType, recipe, handleClick, updateIndex, triggerPopup, fromAPI, setFromAPIPopup }) => {
   let navigate = useNavigate(); // like href
@@ -44,10 +46,11 @@ return (
               <Typography gutterBottom variant="h5" component="div">
                 {recipe.label ? (recipe.label.substring()) : recipe.recipename}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body1" color="text.secondary">
                 <p>Cuisine type: {recipe.cuisineType ? recipe.cuisineType : ""}</p>
                 <p>Meal type: {recipe.mealType}</p>
                 <p>Author: {recipe.source}</p>
+                <p className="ratingSec"><FaStar fontSize={25}/> {recipe.ratingAverage}</p>
               </Typography>
             </CardContent>
           </CardActionArea>

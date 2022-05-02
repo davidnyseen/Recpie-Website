@@ -52,6 +52,9 @@ console.log(recipes);
     setIsOpen(!isOpen);
   }
 
+  const [fromAPIPopup, setFromAPIPopup] = useState(false);
+
+
 
     return (
         <div>
@@ -70,7 +73,8 @@ console.log(recipes);
                         handleClick={setDisplaySingle}
                         updateIndex={setIndex}
                         triggerPopup={togglePopup}
-                        curr_ID = {recipe._id}
+                        setFromAPIPopup={setFromAPIPopup}
+
                     />
                     ))}
                 </div>

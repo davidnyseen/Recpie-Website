@@ -3,6 +3,7 @@ import searchReducer from "./searchReducer";
 import homeReducer from "./homeReducer";
 import loginReducer from "./loginReducer"
 import signupReducer from "./signupReducer";
+import ratingReducer from "./ratingReducer";
 
 export default configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
     recipes: homeReducer,
     login: loginReducer,
     signup: signupReducer,
+    rate: ratingReducer,
   },
 });
