@@ -25,10 +25,12 @@ const recipeSlice = createSlice({
       
     },
     [getRecipes.fulfilled]: (state, action) => {
+      if(action.payload){
       state.status = {success:"success"};
       state.recipes = action.payload.api.hits;
       state.recipesDb = action.payload.recipesDb;
-      console.log(action.payload);
+      // console.log(action.payload);
+      }
     },
     [getRecipes.rejected]: (state, action) => {
       state.status = {failed:"failed"};

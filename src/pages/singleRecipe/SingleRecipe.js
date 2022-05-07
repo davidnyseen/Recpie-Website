@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import './SingleRecipe.css'
+import './singleRecipe.css'
 import { useEffect, useState } from "react";
 import Rating from "../../components/Rating/Rating.js"
 import {saveRate} from "../../store/ratingReducer"
