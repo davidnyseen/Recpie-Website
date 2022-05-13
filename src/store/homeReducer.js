@@ -19,6 +19,11 @@ const recipeSlice = createSlice({
     recipesDb: [],
     status: {},
   },
+  reducers: {
+    updateRate: (state, action) =>{
+      state.recipesDb.ratingAverage = action.payload;
+    }
+  },
   extraReducers: {
     [getRecipes.pending]: (state, action) => {
       state.status = {loading:"loading"};
@@ -39,4 +44,7 @@ const recipeSlice = createSlice({
 
   
 });
+
+export const {updateRate} = recipeSlice.actions;
+
 export default recipeSlice.reducer;

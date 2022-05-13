@@ -8,31 +8,63 @@ import { CardActionArea, ListItem } from '@mui/material';
 import './HomeBody.css'
 import Rating from "../Rating/Rating"
 import { FaStar } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { saveRate } from "../../store/ratingReducer";
+import { useState, useEffect } from 'react'
+
+
+
 
 const HomeBody = ({ index, image, label, dishType, recipe, handleClick, updateIndex, triggerPopup, fromAPI, setFromAPIPopup }) => {
   let navigate = useNavigate(); // like href
   function goToSinglePage() {
     navigate(`/singlerecipe/${index}`);
   }
- // image, label, dishType
-//  recipe.recipe.image, recipe.recipe.label, recipe.recipe.dishType
-  
-//ADDED SINCE 04/04/2022
+  // image, label, dishType
+  //  recipe.recipe.image, recipe.recipe.label, recipe.recipe.dishType
 
-function updateContent () {
-  handleClick(true);
-  updateIndex(index);
-  triggerPopup();
-  setFromAPIPopup(fromAPI);
-}
-console.log(recipe);
+  //ADDED SINCE 04/04/2022
 
-return (
+  function updateContent() {
+    handleClick(true);
+    updateIndex(index);
+    triggerPopup();
+    setFromAPIPopup(fromAPI);
+    //dispatchEvent(updateRate(10));
+  }
+  //console.log(recipe);
+
+  //ADDED SINCE 12/05/2022
+
+  const dispatch = useDispatch();
+  const rate = useSelector((state) => state.rate);
+
+  const [cartRate, setCartRate] = useState(0);
+
+
+  useEffect(() => {
+    if (!fromAPI) {
+      console.log("USER" + recipe.ratingAverage);
+      //dispatch(saveRate(recipe.ratingAverage));
+      setCartRate(recipe.ratingAverage);
+      console.log(cartRate);
+    }
+  }, [cartRate])
+
+  /*useEffect(() => {
+    if (!fromAPI) {
+      console.log(cartRate);
+    }
+  }, [cartRate])*/
+
+
+
+  return (
     <div className="recipe">
-      
+
       <div className="recipe-preview" >
         {/* <span>{recipe._links.self.href}</span> */}
-        <Card sx={{ maxWidth: 340, height:550 }}>
+        <Card sx={{ maxWidth: 340, height: 600 }}>
           <CardActionArea onClick={updateContent}>
 
             <CardMedia
@@ -50,7 +82,7 @@ return (
                 <p>Cuisine type: {recipe.cuisineType ? recipe.cuisineType : ""}</p>
                 <p>Meal type: {recipe.mealType}</p>
                 <p>Author: {recipe.source}</p>
-                <p className="ratingSec"><FaStar fontSize={25}/> {recipe.ratingAverage}</p>
+                <p className="ratingSec">{fromAPI ? "" : <FaStar fontSize={25} />}{fromAPI ? "" : cartRate}</p>
               </Typography>
             </CardContent>
           </CardActionArea>

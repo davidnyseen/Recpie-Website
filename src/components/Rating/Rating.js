@@ -3,60 +3,29 @@ import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { Container, Radio, Rating } from "./RatingStyles"
 import { useDispatch, useSelector } from "react-redux";
-import {saveRate} from "../../store/ratingReducer";
+import { saveRate } from "../../store/ratingReducer";
 import { useRef } from "react";
+import { getRecipes } from "../../store/homeReducer";
 
 
-const Rate = ({curr_ID, updateRate, currentRate}) => {
-  //const [rate, setRate] = useState(0);
+const Rate = ({ curr_recipe, curr_ID, updateRate, currentRate, setDone, confirm, currentUser, currentUserID, updateCartRate }) => {
+  const [rate, setRate] = useState(0);
   //console.log(curr_ID);
   const dispatch = useDispatch();
-  const rate = useSelector((state) => state.rate);
-  let rating = rate.rate;
-  let test = 3;
-  let wola = 0;
-  const initialRender = useRef(true);
-
+  //const rate = useSelector((state) => state.rate);
+  //console.log(rate);
   console.log(currentRate);
+  console.log(currentUserID);
 
-  /*useEffect(() => {
-    if(initialRender.current == true) {
-    console.log("not initial rendering");
-    console.log("CURRENT RATING " + rate.rate);
 
-    console.log("Rating reducer value " + rating);
-    const rateValue = JSON.stringify({rating, curr_ID});
+  let object = { id: 0, name: "", rate: 0 }
 
-    fetch('http://localhost:5000/submitRating', {
-      method: 'post',
-      credentials: 'include',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: rateValue,
-    })
-    .then((response) => {
-      if(response.ok) {
-        console.log("wola");
-        return response.json();
-      }
-      else {
-        throw new Error('Something went wrong when saving the rate');
-      }
-    })
-    .catch((error) => {
-      console.log(error)
-    });
-  } else {
-    console.log("initial rendering");
-    initialRender.current = false;
-  }
-  }, [rate])*/
-  
-  function submitRateToServer(m_rate) {
-    const rateValue = JSON.stringify({m_rate, curr_ID});
-    console.log(m_rate);
+
+  console.log(curr_recipe);
+
+  function submitRateToServer(userRating) {
+    const rateValue = JSON.stringify({ userRating, curr_ID });
+    console.log(userRating);
 
     fetch('http://localhost:5000/submitRating', {
       method: 'post',
@@ -67,43 +36,64 @@ const Rate = ({curr_ID, updateRate, currentRate}) => {
       },
       body: rateValue,
     })
-    .then((response) => {
-      if(response.ok) {
-        console.log("wola");
-        return response.json();
-      }
-      else {
-        throw new Error('Something went wrong when saving the rate');
-      }
-    })
-    .catch((error) => {
-      console.log(error)
-    });
+      .then((response) => {
+        if (response.ok) {
+          console.log("wola");
+          return response.json();
+        }
+        else {
+          throw new Error('Something went wrong when saving the rate');
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      });
   }
-
 
   function handleRating(givenRating) {
-    if(givenRating == rate.rate)
-    {
-      //setRate(0);
-      dispatch(saveRate(0));
-      submitRateToServer(0);
+    if (givenRating == rate) {
+      setRate(0);//UPDATE STARS
+      //updateCartRate(0);//UPDATE RATING AVERAGE
+      /*object.name = currentUser;
+      object.rate = 0;
+      object.id = currentUserID;
+      submitRateToServer(object);*/
 
     }
-    else
-    {
-      //setRate(givenRating);
-      dispatch(saveRate(givenRating));
-      submitRateToServer(givenRating);
+    else {
+      setRate(givenRating);//UPDATE STARS
+      //updateCartRate(givenRating);//UPDATE RATING AVERAGE
+      /*object.name = currentUser;
+      object.rate = givenRating;
+      object.id = currentUserID;
+      submitRateToServer(object);*/
 
 
     }
+    /*setDone(false);
+    confirm(true);*/
+    //setRate(givenRating);
+    //dispatch(saveRate(givenRating));
   }
 
   console.log(rate);
 
+  //ADDED SINCE 08/05/22
 
-  
+  /*useEffect(() => {
+    dispatch(saveRate(0));
+  }, []);*/
+
+  function sendRate() {
+    console.log("SENT FROM USER" + currentUserID);
+    object.name = currentUser;
+    object.rate = rate;
+    object.id = currentUserID;
+    submitRateToServer(object);
+  }
+
+
+
   return (
     <Container>
       {[...Array(5)].map((item, index) => {
@@ -121,19 +111,20 @@ const Rate = ({curr_ID, updateRate, currentRate}) => {
             <Rating>
               <FaStar
                 color={
-                  givenRating < rate.rate || givenRating === rate.rate
+                  givenRating < rate || givenRating === rate
                     ? "000"
                     : "rgb(192,192,192)"
                 }
               />
             </Rating>
+
           </label>
         );
-        console.log(givenRating);
 
       })}
+      <button onClick={sendRate}>Send</button>
     </Container>
   );
 };
-  
+
 export default Rate;

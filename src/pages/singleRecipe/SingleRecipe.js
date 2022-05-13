@@ -4,13 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import './singleRecipe.css'
 import { useEffect, useState } from "react";
 import Rating from "../../components/Rating/Rating.js"
-import {saveRate} from "../../store/ratingReducer"
-import  fetchPost  from '../../utils/fetchPost';
+import { saveRate } from "../../store/ratingReducer"
+import fetchPost from '../../utils/fetchPost';
 import { useRef } from "react";
+import { FaStar } from "react-icons/fa";
+
+import starLogo from '../../img/Star1.png';
+import favLogo from '../../img/Fav1.png'
+import comLogo from '../../img/Comm1.png'
 
 
 
-const SingleRecipe = ({recipe, goBack, fromAPI, curr_ID}) => {
+
+const SingleRecipe = ({ recipe, goBack, fromAPI, curr_ID }) => {
     /*let params = useParams();
     const { recipes } = useSelector((state) => state.recipes);
     let recipe = recipes[params.singlerecipeid];*/
@@ -26,65 +32,142 @@ const SingleRecipe = ({recipe, goBack, fromAPI, curr_ID}) => {
 
     const initialRender = useRef(true);
 
+    const [cartRate, setCartRate] = useState(0);
+
 
     useEffect(() => {
-        if(initialRender.current == true) {
-        //window.scrollTo(0, 0);
-        console.log(rate);
+        if (!fromAPI) {
+            /*if (initialRender.current == true) {
+                //window.scrollTo(0, 0);
+                console.log(rate);
 
-        fetchPost('http://localhost:5000', recipe.recipename)
-        .then((res) => res.json())
-        .then((json) => {
-            console.log(json);
-            console.log(json.recipesDb[0].ratingAverage);
-            dispatch(saveRate(json.recipesDb[0].ratingAverage));
-            //setRating(json.recipesDb[0].ratingAverage);
-        })
-        .catch(err => {
-            console.log("WOLA");
-        });
-        initialRender.current = false;
-    }
-    }, [])
+                fetchPost('http://localhost:5000', recipe._id)
+                .then((res) => res.json())
+                .then((json) => {
+                    console.log(json);
+                    console.log(json.recipesDb[0].ratingAverage);
+                    dispatch(saveRate(json.recipesDb[0].ratingAverage));
+                    //setRating(json.recipesDb[0].ratingAverage);
+                })
+                .catch(err => {
+                    console.log("WOLA");
+                });
+                dispatch(saveRate(recipe.ratingAverage));
+                initialRender.current = false;
+            }*/
+            if (initialRender.current == true) {
+                setCartRate(recipe.ratingAverage);
+                initialRender.current = false;
+            }
+        }
+    }, [cartRate])
 
     console.log(fromAPI);
-    console.log(recipe)
-    
+    console.log(recipe);
+
+    //ADDED SINCE 08/05/22
+
+    const [temp, setTemp] = useState(false);
+    const [ratingDone, setRatingDone] = useState(false);
+    const [cannotRate, setCannotRate] = useState(true);
+
+    function test() {
+        if (login.user) {
+            setCannotRate(false);
+        }
+        setTemp(true);
+
+    };
+
+
+    const { login } = useSelector((state) => state.login);
+
+    console.log(login);
+
+    //ADDED SINCE 10/05/2022
+
+    const [allRates, setAllRates] = useState([]);
+
+    useEffect(() => {
+        //if (initialRender.current == true) {
+            console.log("updatingAllrates");
+            setAllRates(recipe.allRatings);
+            console.log(recipe.allRatings);
+       // }
+    }, [cartRate]);//TO FINISH - Next time, define object with id, name and rate, and pass it into state
+
+
+
+
+
     return (
         <div className="single-recipe">
-            <img src={recipe.images ? (recipe.images.LARGE ? recipe.images.LARGE.url : recipe.images.REGULAR.url) : recipe.imgUrl}></img>
-            <div class="top-part">
-                <h1 class="recipeLabel">{recipe.label ? recipe.label : recipe.recipename} <button onClick={goBack}>Back</button></h1>
-                <h2 class="rating">{fromAPI ? "" : <Rating curr_ID = {recipe._id} updateRate={setRating} currentRate={rating}/>}</h2>
-                <div class="informations">
-                    <p class="recipeAuthor">Author: {recipe.source ? recipe.source : ""}</p>
-                    <p class="type">Cuisine type: {recipe.cuisineType ? recipe.cuisineType : ""}</p>
-                    <p class="mealType">Meal type: {recipe.mealType}</p>
-                    <p class="prepTime">Preparation time: {recipe.totalTime ? recipe.totalTime : ""} min</p>
-                    <p>Current rating from server: {recipe.ratingAverage}</p>
-                    <p>Current rating from state: {recipe.ratingAverage}</p>
+            <img className="mainIMG" src={recipe.images ? (recipe.images.LARGE ? recipe.images.LARGE.url : recipe.images.REGULAR.url) : recipe.imgUrl}></img>
+            <div className="top-part">
+                <h1 className="recipeLabel">{recipe.label ? recipe.label : recipe.recipename} <button onClick={goBack}>Back</button></h1>
+                <h2 className="rating">{fromAPI ? "" : <FaStar fontSize={25} />} {fromAPI ? "" : cartRate} {/*<Rating curr_ID = {recipe._id} updateRate={setRating} currentRate={rating}/>*/}</h2>
+                <div className="informations">
+                    <p className="recipeAuthor">Author: {recipe.source ? recipe.source : ""}</p>
+                    <hr className="test"></hr>
+                    <p className="type">Cuisine type: {recipe.cuisineType ? recipe.cuisineType : ""}</p>
+                </div>
+                <hr className="testHor"></hr>
+                <div className="informations">
+                    <p className="mealType">Meal type: {recipe.mealType}</p>
+                    <hr className="test"></hr>
+                    <p className="prepTime">Preparation time: {recipe.totalTime ? recipe.totalTime : ""} min</p>
+                    <p className="ingredients">Ingredients: {recipe.ingredientLines ? recipe.ingredientLines.length : "X"}</p>
+
                 </div>
             </div>
-            <hr class="main-bar"></hr>
+            <p>Current rating from server: {rate.rate}</p>
 
-            <div class="globalInfo">
-                <div class="column">
-                    <p class="ingredients">Ingredients: {recipe.ingredientLines ? recipe.ingredientLines.length : ""}</p>
-                </div>
-                <div class="column">
-                    <p class="favorite">Add to favorite</p>
-                </div>
-                <div class="column">
-                    <p class="addComment">Add a comment</p>
-                </div>
 
-            </div>
-            <hr class="main-bar"></hr>
-            <div class="ingredientsDetails">
+            <hr className="main-bar"></hr>
+            <div className="ingredientsDetails">
                 <h1>Ingredients:</h1>
                 <ol>{recipe.ingredientLines ? (recipe.ingredientLines && recipe.ingredientLines.map((step, i) =>
-                (<li>{step}</li>))) : recipe.directions}</ol>
+                    (<li>{step}</li>))) : (recipe.ingredients && recipe.ingredients.map((step, i) => (<li>{step}</li>)))}</ol>
+            </div>
+            <hr className="main-bar"></hr>
+            <div className="globalInfo">
+                {fromAPI ? "" : <div className="column">
+                    <img className="logo" src={starLogo} onClick={test}></img>
+                    <p className="ingredients">Rate this recipe</p>
+
+                </div>}
+                <div className="column">
+                    <img className="logo" src={favLogo} onClick={() => console.log("CLICKFAV")}></img>
+                    <p className="favorite">Add to favorite</p>
                 </div>
+                <div className="column">
+                    <img className="logo" src={comLogo} onClick={() => console.log("CLICKCOM")}></img>
+                    <p className="addComment">Add a comment</p>
+                </div>
+
+            </div>
+            {/*<p>{login.user && temp ? <Rating curr_ID = {recipe._id} updateRate={setRating} currentRate={rating} setDone={setTemp} confirm={setRatingDone}/> : ""}</p>*/}
+            <p>{temp ? <div>{login.user ? <Rating curr_recipe={recipe} curr_ID={recipe._id} updateRate={setRating} currentRate={rating} setDone={setTemp} confirm={setRatingDone}
+                currentUser={login.user} currentUserID={login.id} updateCartRate={setCartRate} /> : "Please login"}</div> : ""}</p>
+            <p>{ratingDone ? "DONE" : ""}</p>
+            <div className="ratingsAndComments">
+                {/*<p>{recipe.allRatings[0].name}</p>
+                <p>{recipe.allRatings[0].rate}</p>*/}
+                <h1>Reviews</h1>
+                {recipe.allRatings && recipe.allRatings.map((element, i) => (
+                    <div className="usrReaction" key={i}>
+                        <p className="usrName">{element.name}</p>
+                        <p className="usrRating"><FaStar fontSize={25} />{element.rate}</p>
+                        <hr></hr>
+                    </div>
+                ))}
+                {/*{allRates && allRates.map((element, i) => (
+                    <div key={i}>
+                        <p>{element.name}</p>
+                        <p>{element.rate}</p>
+                    </div>
+                ))}*/}
+            </div>
         </div>
 
     );

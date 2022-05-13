@@ -1,15 +1,438 @@
-.single-recipe {
-    max-width: 1100px;
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+@media only screen and (max-width: 1200px), screen and (max-height: 1200px) {
+    /*.single-recipe {
+        
+        max-width: 1200px;
+        margin: auto;
+        margin-top: 60px;
+        margin-bottom: 100px;
+        font-size: 90%;
+        font-family: 'Rubik', sans-serif;
+    }*/
+    
+    .single-recipe .mainIMG {
+        border-radius: 8px;
+       /* float: right;*/
+        width: 200px;
+        height: 200px;
+    }
+
+   /* .single-recipe .logo {
+        border: 3px solid gold;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: black;
+    }
+    
+    .single-recipe .top-part {
+        text-align: left;
+        height: 600px;
+    }
+    
+    .single-recipe .top-part .rating{
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+    
+    .single-recipe .informations {
+        line-height: 50px;
+        width: 800px;
+        margin: auto;
+        max-height: 400px;
+        display: inline-grid;
+        grid-template-columns: auto auto auto;
+    }
+    
+    .single-recipe .recipeLabel {
+        font-size: 300%;
+        
+    }
+
+    .single-recipe .informations .recipeAuthor{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .type{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .mealType{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .prepTime{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .ingredients{
+        padding: 15px;
+    }
+    
+    .single-recipe .ingredientsDetails {
+        clear: both;
+        margin: auto;
+        text-align: left;
+    }
+    
+    .single-recipe .main-bar {
+        width: 1200px;
+        margin-bottom: 60px;
+    }
+    
+    .single-recipe .little-bar {
+        width: 550px;
+    }
+    
+    .single-recipe .globalInfo {
+        clear: both;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+        background-color: beige;
+        border-radius: 8px;
+    }
+    .single-recipe .globalInfo .column {
+        margin-right: 10px;
+    }*/
 }
 
-.single-recipe img {
+@media only screen and (min-width: 720px) {
+    .single-recipe {
+        
+        max-width: 1200px;
+        margin: auto;
+        margin-top: 60px;
+        margin-bottom: 100px;
+        font-size: 90%;
+        font-family: 'Rubik', sans-serif;
+    }
+    
+    .single-recipe .mainIMG {
+        border-radius: 8px;
+        float: right;
+        width: 400px;
+        height: 400px;
+    }
+
+    .single-recipe .logo {
+        border: 3px solid gold;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: black;
+    }
+    
+    .single-recipe .top-part {
+        text-align: left;
+        height: 600px;
+    }
+    
+    .single-recipe .top-part .rating{
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+    
+    .single-recipe .informations {
+        line-height: 50px;
+        width: 800px;
+        margin: auto;
+        max-height: 400px;
+        display: inline-grid;
+        grid-template-columns: auto auto auto;
+    }
+    
+    .single-recipe .recipeLabel {
+        font-size: 300%;
+        
+    }
+
+    .single-recipe .informations .recipeAuthor{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .type{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .mealType{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .prepTime{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .ingredients{
+        padding: 15px;
+    }
+    
+    .single-recipe .ingredientsDetails {
+        clear: both;
+        margin: auto;
+        text-align: left;
+    }
+    
+    .single-recipe .main-bar {
+        width: 1200px;
+        margin-bottom: 60px;
+    }
+    
+    .single-recipe .little-bar {
+        width: 550px;
+    }
+    
+    .single-recipe .globalInfo {
+        clear: both;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+        background-color: beige;
+        border-radius: 8px;
+    }
+    .single-recipe .globalInfo .column {
+        margin-right: 10px;
+    }
+}
+
+
+@media only screen and (min-width: 1920px) {
+    .single-recipe {
+        
+        max-width: 1400px;
+        margin: auto;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        font-size: 100%;
+        font-family: 'Rubik', sans-serif;
+    }
+    
+    .single-recipe .mainIMG {
+        border-radius: 8px;
+        float: right;
+        width: 500px;
+        height: 500px;
+    }
+
+    .single-recipe .logo {
+        border: 3px solid gold;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: black;
+    }
+    
+    .single-recipe .top-part {
+        text-align: left;
+        height: 600px;
+    }
+    
+    .single-recipe .top-part .rating{
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+    
+    .single-recipe .informations {
+        line-height: 50px;
+        width: 800px;
+        margin: auto;
+        max-height: 400px;
+        display: inline-grid;
+        grid-template-columns: auto auto auto;
+    }
+    
+    .single-recipe .recipeLabel {
+        font-size: 300%;
+        
+    }
+
+    .single-recipe .informations .recipeAuthor{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .type{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .mealType{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .prepTime{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .ingredients{
+        padding: 15px;
+    }
+    
+    .single-recipe .ingredientsDetails {
+        clear: both;
+        margin: auto;
+        text-align: left;
+    }
+    
+    .single-recipe .main-bar {
+        width: 1400px;
+        margin-bottom: 60px;
+    }
+    
+    .single-recipe .little-bar {
+        width: 550px;
+    }
+    
+    .single-recipe .globalInfo {
+        clear: both;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+        background-color: beige;
+        border-radius: 8px;
+    }
+    .single-recipe .globalInfo .column {
+        margin-right: 10px;
+    }
+
+    .single-recipe .ratingsAndComments {
+        text-align: left;
+    }
+
+    .single-recipe .ratingsAndComments .usrReaction .usrRating {
+        margin-left: 20px;
+
+    }
+}
+
+
+@media only screen and (min-width: 2560px) {
+    .single-recipe {
+        
+        max-width: 1400px;
+        margin: auto;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        font-size: 130%;
+        font-family: 'Rubik', sans-serif;
+    }
+    
+    .single-recipe .mainIMG {
+        border-radius: 8px;
+        float: right;
+        width: 500px;
+        height: 500px;
+    }
+
+    .single-recipe .logo {
+        border: 3px solid gold;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: black;
+    }
+    
+    .single-recipe .top-part {
+        text-align: left;
+        height: 600px;
+    }
+    
+    .single-recipe .top-part .rating{
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+    
+    .single-recipe .informations {
+        line-height: 50px;
+        width: 800px;
+        margin: auto;
+        max-height: 400px;
+        display: inline-grid;
+        grid-template-columns: auto auto auto;
+    }
+    
+    .single-recipe .recipeLabel {
+        font-size: 300%;
+        
+    }
+
+    .single-recipe .informations .recipeAuthor{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .type{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .mealType{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .prepTime{
+        padding: 15px;
+    }
+    
+    .single-recipe .informations .ingredients{
+        padding: 15px;
+    }
+    
+    .single-recipe .ingredientsDetails {
+        clear: both;
+        margin: auto;
+        text-align: left;
+    }
+    
+    .single-recipe .main-bar {
+        width: 1400px;
+        margin-bottom: 60px;
+    }
+    
+    .single-recipe .little-bar {
+        width: 550px;
+    }
+    
+    .single-recipe .globalInfo {
+        clear: both;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+        background-color: beige;
+        border-radius: 8px;
+    }
+    .single-recipe .globalInfo .column {
+        margin-right: 10px;
+    }
+}
+/*
+.single-recipe {
+        
+    max-width: 1400px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    font-size: 130%;
+    font-family: 'Rubik', sans-serif;
+}
+
+.single-recipe .mainIMG {
     border-radius: 8px;
     float: right;
     width: 500px;
     height: 500px;
+}
+
+.single-recipe .logo {
+    border: 3px solid gold;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: black;
 }
 
 .single-recipe .top-part {
@@ -27,10 +450,16 @@
 
 .single-recipe .informations {
     line-height: 50px;
+    width: 800px;
     margin: auto;
     max-height: 400px;
     display: inline-grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
+}
+
+.single-recipe .recipeLabel {
+    font-size: 300%;
+    
 }
 
 .single-recipe .informations .recipeAuthor{
@@ -60,7 +489,7 @@
 }
 
 .single-recipe .main-bar {
-    width: 1100px;
+    width: 1400px;
     margin-bottom: 60px;
 }
 
@@ -73,7 +502,11 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
+    background-color: beige;
+    border-radius: 8px;
 }
 .single-recipe .globalInfo .column {
     margin-right: 10px;
-}
+}*/
+
+
