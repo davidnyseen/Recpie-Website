@@ -1,6 +1,7 @@
 .container-recipes {
     margin: 0 auto;
     max-width: 1200;
+    background-color: #f1efe9;
   }
   .recipe{
     display: flex;

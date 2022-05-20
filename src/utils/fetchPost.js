@@ -1,6 +1,7 @@
 const fetchPost = (url, value) => {
     return fetch(url, {  
       method: 'post',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },

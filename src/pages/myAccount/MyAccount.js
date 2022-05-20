@@ -9,82 +9,40 @@ import MyRecipes from '../../myAccountComp/myRecipes/MyRecipes';
 import HomeBody from "../../components/homeBody/HomeBody";
 import Popup from "../../components/Popup/Popup";
 import SingleRecipe from "../singleRecipe/SingleRecipe";
-
+import MyUploads from "../../components/myUploads/MyUploads";
+import SavedRecipes from "../../components/savedRecipes/SavedRecipes";
 const MyAccount = () => {
-    const [recipes, setRecipes] = useState([])
-    const [log, setlog] = useState(false)
+
+    const [myRecipes, setmyRecipes] = useState(true);
+    const [mysavedRecipes, setmsavedRecipes] = useState(false)
+
+
     let navigate = useNavigate(); // like href
-    const { login } = useSelector((state) => state.login);
-    let logd = false;
 
     UseProtectedFetch(); // this is a protected route
-    useEffect(() => {
-        console.log(recipes);
-    }, [recipes])
+    let setuploads =() => {
+        setmyRecipes(true)
+        setmsavedRecipes(false)
+    }
+    let setsaved =() => {
+        setmyRecipes(false)
+        setmsavedRecipes(true);
 
-    useEffect(() => {
-        let cancel = false;
-        fetchGet('http://localhost:5000/myAccount')
-            .then((res) => {
-                if(cancel) return;
-                setRecipes([...res])
-            })
-return()=>{
-    cancel = true
-}
-    }, [])
-
-console.log(recipes);
-
-  //ADDED SINCE 06/04/2022
-  const [displaySingle, setDisplaySingle] = useState(false);
-  const [currentIndex, setIndex] = useState(-1);
-  console.log(recipes);
-
-  function setBack() {
-    setDisplaySingle(false);
-    togglePopup();
-  }
-
-  const [isOpen, setIsOpen] = useState(false);
- 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  }
-
-  const [fromAPIPopup, setFromAPIPopup] = useState(false);
-
-
+    }
 
     return (
         <div>
-            <h1>My account</h1>
-            <div className="username">{login.user && <h2>welcome {login.user}</h2>}</div>
-            <div><h2>my uploads</h2>
-            </div>
-            <div className="container-recipes">
-  
-                <div className="recipe">
-                    {recipes && recipes.map((recipe, i) =>
-                    (
-                    <HomeBody key={i} index={i}
-                        image={recipe.imgUrl} label={recipe.recipename}
-                        dishType={recipe.mealType} recipe={recipe}
-                        handleClick={setDisplaySingle}
-                        updateIndex={setIndex}
-                        triggerPopup={togglePopup}
-                        setFromAPIPopup={setFromAPIPopup}
-
-                    />
-                    ))}
-                </div>
-                {isOpen && <Popup
-                content={<>
-                <SingleRecipe recipe={recipes[currentIndex]} goBack={setBack} fromAPI={false}></SingleRecipe>
-                </>}
-                handleClose={togglePopup}
-                />}
-            </div>
+            <nav className="main-nav">
+                <ul>
+                    <li className={myRecipes ? " currentBtn lili" : "lili"}
+                     onClick={()=>setuploads()}>my uploads</li>
+                    <li className={mysavedRecipes ? " currentBtn lili" : "lili"}
+                    onClick={()=>setsaved()}>saved recipes</li>
+        
+                </ul>
+            </nav>
+        {myRecipes && <MyUploads></MyUploads>}
+        {mysavedRecipes && <SavedRecipes></SavedRecipes>}
         </div>
     );
 }

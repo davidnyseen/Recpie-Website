@@ -11,6 +11,9 @@ import Popup from '../../components/Popup/Popup';
 import {updateRate} from '../../store/homeReducer'
 import {saveRate} from "../../store/ratingReducer";
 
+import Header1 from '../../img/Header1.jpg'
+
+
 
 
 const Home = () => {

@@ -6,6 +6,8 @@ import HomeBody from "../../components/homeBody/HomeBody";
 import Popup from "../../components/Popup/Popup";
 import SingleRecipe from "../singleRecipe/SingleRecipe";
 import "./Categories.css"
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -34,27 +36,6 @@ const Categories = () => {
     }
 
     useEffect(() => {
-        /*fetch('http://localhost:5000/getCategory', {
-            method: 'post',
-            credentials: 'include',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: {breakfest},
-          })
-          .then((response) => {
-            if(response.ok) {
-              //console.log(response.json());
-              return response.json();
-            }
-            else {
-              throw new Error('Something went wrong getting category');
-            }
-          })
-          .catch((error) => {
-            console.log(error)
-          });*/
           getCategory(breakfest, setTest);
           
     }, []);
@@ -81,11 +62,18 @@ const Categories = () => {
 
     const [fromAPIPopup, setFromAPIPopup] = useState(false);
 
+    //ADDED SINCE 18/05/22
+
+    let navigate = useNavigate();
+
+    function redirect (type) {
+      navigate(`breakfast`, {state: type});
+    }
 
     
     return ( 
         <div className="Categories">
-        <h1>Categories</h1>
+        {/*<h1>Categories</h1>
         <div><h2>Breakfast</h2>
         </div>
         <div className="container-recipes">
@@ -125,21 +113,21 @@ const Categories = () => {
                 </>}
             handleClose={togglePopup}
             />}
-            </div>
-            {/*<div className="row">
-                <div className="column1">
+            </div>*/}
+            <div className="row">
+                <div className="column1" onClick={() => redirect("breakfest")}>
                     <h1>Breakfast</h1>
                     <p>Some text..</p>
                 </div>
-                <div className="column2">
+                <div className="column2" onClick={() => redirect("lunch")}>
                     <h1>Lunch</h1>
                     <p>Some text..</p>
                 </div>
-                <div className="column3">
+                <div className="column3" onClick={() => redirect("dinner")}>
                     <h1>Dinner</h1>
                     <p>Some text..</p>
                 </div>
-          </div>*/}
+          </div>
         </div>
      );
 }

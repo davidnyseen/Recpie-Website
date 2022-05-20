@@ -18,7 +18,7 @@ const Rate = ({ curr_recipe, curr_ID, updateRate, currentRate, setDone, confirm,
   console.log(currentUserID);
 
 
-  let object = { id: 0, name: "", rate: 0 }
+  let object = { id: 0, name: "", rate: 0, comment: "" }
 
 
   console.log(curr_recipe);
@@ -78,17 +78,23 @@ const Rate = ({ curr_recipe, curr_ID, updateRate, currentRate, setDone, confirm,
 
   console.log(rate);
 
-  //ADDED SINCE 08/05/22
+  //ADDED SINCE 16/05/22
 
   /*useEffect(() => {
     dispatch(saveRate(0));
   }, []);*/
+
+  const [directions, setdirections] = useState(' ');
+
+  console.log(directions);
+
 
   function sendRate() {
     console.log("SENT FROM USER" + currentUserID);
     object.name = currentUser;
     object.rate = rate;
     object.id = currentUserID;
+    object.comment = directions;
     submitRateToServer(object);
   }
 
@@ -122,6 +128,10 @@ const Rate = ({ curr_recipe, curr_ID, updateRate, currentRate, setDone, confirm,
         );
 
       })}
+      <textarea rows="5" cols="50" name="comment" form="usrform"
+        value={directions} placeholder="pizza"
+        onChange={(e) => setdirections(e.target.value)}>
+      </textarea>
       <button onClick={sendRate}>Send</button>
     </Container>
   );

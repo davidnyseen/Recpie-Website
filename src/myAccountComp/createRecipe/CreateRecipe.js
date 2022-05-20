@@ -3,6 +3,8 @@ import './createRecipe.css'
 import { useForm } from "react-hook-form";
 import FileUploader from '../../components/fileUploader/FileUploader';
 import UseProtectedFetch from '../../customHooks/UseProtectedFetch'
+import { useDispatch, useSelector } from "react-redux";
+
 
 
 const CreateRecipe = () => {
@@ -13,10 +15,18 @@ const CreateRecipe = () => {
   const [ingredient, setIngredient] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [mealType, setmealType] = useState('breakfest');
+  const [cuisineType, setCuisineType] = useState("");
   const [directions, setdirections] = useState(' ');
-  const [preprationtime, setpreprationtime] = useState(' ');
+  const [preprationtime, setpreprationtime] = useState('0.5');
   const formData = new FormData();
   UseProtectedFetch(); // this is a protected route
+
+  const { login } = useSelector((state) => state.login);
+
+  console.log(login);
+
+  const [login2, setLogin] = useState(useSelector((state) => state.login));
+
 
 
 
@@ -45,7 +55,7 @@ const CreateRecipe = () => {
     if(imgUrl){
       const value = JSON.stringify({
         recipename, ingredients, imgUrl,
-        mealType, directions, preprationtime
+        mealType, cuisineType, directions, preprationtime, login
       });
 
       fetch('http://localhost:5000/submitNewRecipe', {
@@ -100,6 +110,11 @@ const CreateRecipe = () => {
     const file = event.target.files[0]
     setFile(file);
   }
+  
+
+  //ADDED SINCE 19/05/2022
+
+
 
 
   return (
@@ -152,6 +167,29 @@ const CreateRecipe = () => {
           <option value="lunch">lunch</option>
           <option value="dinner">dinner</option>
 
+        </select>
+
+        <label className="label">Cuisine type:</label>
+        <select
+          value={mealType}
+          onChange={(e) => setCuisineType(e.target.value)}
+        >
+          <option value="American">American</option>
+          <option value="Italian">Italian</option>
+          <option value="Asian">Asian</option>
+          <option value="Mexican">Mexican</option>
+          <option value="French">French</option>
+          <option value="Indian">Indian</option>
+          <option value="Chinese">Chinese</option>
+          <option value="Greek">Greek</option>
+          <option value="English">English</option>
+          <option value="Spanish">Spanish</option>
+          <option value="Thai">Thai</option>
+          <option value="German">German</option>
+          <option value="Moroccan">Moroccan</option>
+          <option value="Irish">Irish</option>
+          <option value="Japanese">Japanese</option>
+          <option value="Israeli">Israeli</option>
         </select>
         {/* add directions */}
         <label className="label" style={{ marginTop: "30px" }}>add directions:</label>

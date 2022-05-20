@@ -2,8 +2,14 @@
 .recipe-preview{
     margin: 50px;
     display: inline;
-
+    box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.53);
+    transition: transform .2s;
 }
+
+.recipe-preview:hover {
+    transform: scale(1.05);
+}
+
 .recipe-preview img{
     width: auto;
 }

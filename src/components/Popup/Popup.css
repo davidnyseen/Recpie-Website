@@ -253,3 +253,22 @@
     background: gray; 
   }
 }
+
+.box {
+  animation: open 0.15s forwards;
+  background-color: #f1efe9;
+}
+
+@keyframes open {
+  0%{
+    transform: scale(0);
+  }
+  
+  50%{
+    transform: scale(1.1);
+  }
+
+  100%{
+    transform: scale(1);
+  }
+}

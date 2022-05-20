@@ -11,6 +11,7 @@ import SingleRecipe from "../pages/singleRecipe/SingleRecipe";
 import CreateRecipe from "../myAccountComp/createRecipe/CreateRecipe";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
+import CategoryType from "../pages/categories/CategoryType";
 
 export default function App() {
 return (
@@ -29,6 +30,7 @@ return (
           <Route path="create" element={<CreateRecipe />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="categories/:type" element={<CategoryType/>} />
 
 
     </Routes>

@@ -9,6 +9,12 @@
     height: 100vh; /* Should be removed. Only for demonstration */
     background-color: #aaa;
     background-image: url("https://media-cdn.tripadvisor.com/media/photo-m/1280/1a/59/3d/9d/french-breakfast.jpg");
+    transition: transform .2s;
+    border-style: solid;
+  }
+
+  .column1:hover {
+    transform: scale(1.05);
   }
 
   .column2 {
@@ -16,6 +22,13 @@
     width: 33.33%;
     height: 100vh; /* Should be removed. Only for demonstration */
     background-color: #bbb;
+    background-image: url("https://images.pexels.com/photos/33162/food-restaurant-menu-asia.jpg?cs=srgb&dl=pexels-pixabay-33162.jpg&fm=jpg");
+    transition: transform .2s;
+    border-style: solid;
+  }
+
+  .column2:hover {
+    transform: scale(1.05);
   }
 
   .column3 {
@@ -23,6 +36,13 @@
     width: 33.33%;
     height: 100vh; /* Should be removed. Only for demonstration */
     background-color: #ccc;
+    transition: transform .2s;
+    border-style: solid;
+    background-image: url("https://images.unsplash.com/photo-1463183547458-6a2c760d0912?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687");
+  }
+
+  .column3:hover {
+    transform: scale(1.05);
   }
   
   /* Clear floats after the columns */

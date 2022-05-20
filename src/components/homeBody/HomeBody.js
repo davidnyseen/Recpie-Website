@@ -81,7 +81,7 @@ const HomeBody = ({ index, image, label, dishType, recipe, handleClick, updateIn
               <Typography variant="body1" color="text.secondary">
                 <p>Cuisine type: {recipe.cuisineType ? recipe.cuisineType : ""}</p>
                 <p>Meal type: {recipe.mealType}</p>
-                <p>Author: {recipe.source}</p>
+                <p>Author: { recipe.author ? recipe.author : recipe.source}</p>
                 <p className="ratingSec">{fromAPI ? "" : <FaStar fontSize={25} />}{fromAPI ? "" : cartRate}</p>
               </Typography>
             </CardContent>
