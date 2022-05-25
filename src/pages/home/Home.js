@@ -60,8 +60,12 @@ const Home = () => {
   }
 
   function reGetRecipes() {
-    dispatch(getRecipes(value)); // 
+    //dispatch(getRecipes(value)); // CHECK
 
+  }
+  
+  function reGetRecommended() {
+    getRecommendedRecipes(login.id);
   }
 
   const [isOpen, setIsOpen] = useState(false);

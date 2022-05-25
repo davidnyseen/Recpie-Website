@@ -4,6 +4,8 @@ import Register from "../../pages/register/Register";
 import './banner.css'
 import { useDispatch, useSelector } from "react-redux";
 import { loginValue } from "../../store/loginReducer";
+import { setStatus } from "../../store/recommendedReducer";
+import { setRecommendedRecipes } from "../../store/recommendedReducer";
 
 export default function App() {
   const { login } = useSelector((state) => state.login);
@@ -14,7 +16,9 @@ export default function App() {
       const res = await fetch('http://localhost:5000/logout')
       const data = await res.json();
       if (data) {
-        dispatch(loginValue({}))
+        dispatch(loginValue({}));
+        dispatch(setStatus({}));
+        dispatch(setRecommendedRecipes([]));
       }
     }
     catch {

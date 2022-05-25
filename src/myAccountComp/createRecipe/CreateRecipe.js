@@ -15,7 +15,7 @@ const CreateRecipe = () => {
   const [ingredient, setIngredient] = useState('');
   const [ingredients, setIngredients] = useState([]);
   const [mealType, setmealType] = useState('breakfest');
-  const [cuisineType, setCuisineType] = useState("");
+  const [cuisineType, setCuisineType] = useState("American");
   const [directions, setdirections] = useState(' ');
   const [preprationtime, setpreprationtime] = useState('0.5');
   const formData = new FormData();
@@ -69,12 +69,14 @@ const CreateRecipe = () => {
       })
         .then((response) => {
           if (response.ok) {
+            alert("Your recipe has been successfully submitted");
             return response.json();
           } else {
             throw new Error('Something went wrong submitNewRecipe');
           }
         })
         .catch((error) => {
+          alert("oops, there was an error when submitting the recipe");
           console.log(error)
         });
     }
@@ -143,11 +145,11 @@ const CreateRecipe = () => {
 
 
         </select>
-        <ul>{ingredients && ingredients.map(
+        <ol>{ingredients && ingredients.map(
           (ingr, i) => (
             <li key={i}>{ingr}</li>
           ))}
-        </ul>
+        </ol>
         <label className="label">ingredients:</label>
         <div className="ingredient">
           <input

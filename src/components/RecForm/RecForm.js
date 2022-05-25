@@ -11,8 +11,8 @@ const RecForm = ({ closeRecommendationForm }) => {
     const curr_ID = login.id;
 
     const [favCuisineType, setFavCuisineType] = useState("American");
-    const [excludedIngredient, setExcludedIngredient] = useState("American");
-    const [recipeTime, setRecipeTime] = useState("Avocado");
+    const [excludedIngredient, setExcludedIngredient] = useState("Avocado");
+    const [recipeTime, setRecipeTime] = useState("0.5");
 
     let preferences = { favCuisineType, excludedIngredient, recipeTime };
 
@@ -62,7 +62,7 @@ const RecForm = ({ closeRecommendationForm }) => {
             <h1>Recommendation Form</h1>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <label className="recommendationLabel">What are your favorite cuisine type ?</label>
-                <select className="recommendationInput" onChange={(e) => setFavCuisineType(e.target.value)}>
+                <select className="recommendationInput" value={favCuisineType} onChange={(e) => setFavCuisineType(e.target.value)}>
                     <option value="American">American</option>
                     <option value="Italian">Italian</option>
                     <option value="Asian">Asian</option>
@@ -81,7 +81,7 @@ const RecForm = ({ closeRecommendationForm }) => {
                     <option value="Israeli">Israeli</option>
                 </select>
                 <label className="recommendationLabel">Which ingredient do you want to exclude ?</label>
-                <select className="recommendationInput" onChange={(e) => setExcludedIngredient(e.target.value)}>
+                <select className="recommendationInput" value={excludedIngredient} onChange={(e) => setExcludedIngredient(e.target.value)}>
                     <option value="Avocado">Avocado</option>
                     <option value="Banana">Banana</option>
                     <option value="Beef">Beef</option>
@@ -95,7 +95,7 @@ const RecForm = ({ closeRecommendationForm }) => {
                     <option value="Tomato">Tomato</option>
                 </select>
                 <label className="recommendationLabel">How much time do you want to spend on a recipe ?</label>
-                <select className="recommendationInput" onChange={(e) => setRecipeTime(e.target.value)}>
+                <select className="recommendationInput" value={recipeTime} onChange={(e) => setRecipeTime(e.target.value)}>
                     <option value="0.5">half an hour</option>
                     <option value="1">1 hour</option>
                     <option value="1.5">1.5 hours</option>
