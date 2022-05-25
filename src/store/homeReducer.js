@@ -17,6 +17,7 @@ const recipeSlice = createSlice({
   initialState: {
     recipes: [],
     recipesDb: [],
+    recipesRecommendation: [],
     status: {},
   },
   reducers: {

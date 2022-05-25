@@ -67,7 +67,7 @@ const Categories = () => {
     let navigate = useNavigate();
 
     function redirect (type) {
-      navigate(`breakfast`, {state: type});
+      navigate(type, {state: type});
     }
 
     
@@ -115,17 +115,14 @@ const Categories = () => {
             />}
             </div>*/}
             <div className="row">
-                <div className="column1" onClick={() => redirect("breakfest")}>
+                <div className="column1" onClick={() => redirect(`breakfest`)}>
                     <h1>Breakfast</h1>
-                    <p>Some text..</p>
                 </div>
-                <div className="column2" onClick={() => redirect("lunch")}>
+                <div className="column2" onClick={() => redirect(`lunch`)}>
                     <h1>Lunch</h1>
-                    <p>Some text..</p>
                 </div>
-                <div className="column3" onClick={() => redirect("dinner")}>
+                <div className="column3" onClick={() => redirect(`dinner`)}>
                     <h1>Dinner</h1>
-                    <p>Some text..</p>
                 </div>
           </div>
         </div>

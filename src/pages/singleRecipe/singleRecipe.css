@@ -578,6 +578,10 @@
     width: 100px;
 }
 
+.usrReaction .usrComment {
+    width: 500px;
+}
+
 .usrReaction .reviewBar {
     margin-left: 20px;
     margin-right: 70px;
@@ -585,4 +589,8 @@
 
 .column:active {
     transform: scale(0.95);
+}
+
+.single-recipe .directionsDetails {
+    text-align: left;
 }

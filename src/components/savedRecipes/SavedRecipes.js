@@ -18,39 +18,54 @@ const SavedRecipes = () => {
     let logd = false;
 
     // UseProtectedFetch(); // this is a protected route
-   
+
     useEffect(() => {
         let cancel = false;
         fetchGet('http://localhost:5000/myAccount/savedRecipes')
             .then((res) => {
-                if(cancel) return;
+                if (cancel) return;
                 setRecipes([...res]);
                 console.log(recipes);
             })
-return()=>{
-    cancel = true
-}
+        return () => {
+            cancel = true
+        }
     }, [])
 
-// console.log(recipes);
+    function getSavedRecipes() {
+        let cancel = false;
+        fetchGet('http://localhost:5000/myAccount/savedRecipes')
+            .then((res) => {
+                if (cancel) return;
+                setRecipes([...res]);
+                console.log(recipes);
+            })
+        return () => {
+            cancel = true
+        }
+    }
 
-  //ADDED SINCE 06/04/2022
-  const [displaySingle, setDisplaySingle] = useState(false);
-  const [currentIndex, setIndex] = useState(-1);
-//   console.log(recipes);
+    // console.log(recipes);
 
-  function setBack() {
-    setDisplaySingle(false);
-    togglePopup();
-  }
+    //ADDED SINCE 06/04/2022
+    const [displaySingle, setDisplaySingle] = useState(false);
+    const [currentIndex, setIndex] = useState(-1);
+    //   console.log(recipes);
 
-  const [isOpen, setIsOpen] = useState(false);
- 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  }
+    function setBack() {
+        setDisplaySingle(false);
+        togglePopup();
+    }
 
-  const [fromAPIPopup, setFromAPIPopup] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    }
+
+    const [fromAPIPopup, setFromAPIPopup] = useState(false);
+    const [recRecipePopup, setRecRecipePopup] = useState(false);
+
 
 
 
@@ -61,26 +76,28 @@ return()=>{
             <div><h2>saved recipes</h2>
             </div>
             <div className="container-recipes">
-  
+
                 <div className="recipe">
                     {recipes && recipes.map((recipe, i) =>
                     (
-                    <HomeBody key={i} index={i}
-                        image={recipe.imgUrl} label={recipe.recipename}
-                        dishType={recipe.mealType} recipe={recipe}
-                        handleClick={setDisplaySingle}
-                        updateIndex={setIndex}
-                        triggerPopup={togglePopup}
-                        setFromAPIPopup={setFromAPIPopup}
+                        <HomeBody key={i} index={i}
+                            image={recipe.imgUrl} label={recipe.recipename}
+                            dishType={recipe.mealType} recipe={recipe}
+                            handleClick={setDisplaySingle}
+                            updateIndex={setIndex}
+                            triggerPopup={togglePopup}
+                            setFromAPIPopup={setFromAPIPopup}
+                            setRecRecipePopup={() => setRecRecipePopup(true)}
 
-                    />
+
+                        />
                     ))}
                 </div>
                 {isOpen && <Popup
-                content={<>
-                <SingleRecipe recipe={recipes[currentIndex]} goBack={setBack} fromAPI={false}></SingleRecipe>
-                </>}
-                handleClose={togglePopup}
+                    content={<>
+                        <SingleRecipe recipe={recipes[currentIndex]} goBack={setBack} fromAPI={false} reGetRecipes={getSavedRecipes}></SingleRecipe>
+                    </>}
+                    handleClose={togglePopup}
                 />}
             </div>
         </div>

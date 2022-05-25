@@ -18,7 +18,7 @@ import comLogo from '../../img/Comm1.png'
 
 
 
-const SingleRecipe = ({ recipe, goBack, fromAPI, curr_ID }) => {
+const SingleRecipe = ({ recipe, goBack, fromAPI, curr_ID, reGetRecipes }) => {
     /*let params = useParams();
     const { recipes } = useSelector((state) => state.recipes);
     let recipe = recipes[params.singlerecipeid];*/
@@ -94,9 +94,9 @@ const SingleRecipe = ({ recipe, goBack, fromAPI, curr_ID }) => {
 
     useEffect(() => {
         //if (initialRender.current == true) {
-        console.log("updatingAllrates");
+        //console.log("updatingAllrates");
         setAllRates(recipe.allRatings);
-        console.log(recipe.allRatings);
+        //console.log(recipe.allRatings);
         // }
     }, [cartRate]);//TO FINISH - Next time, define object with id, name and rate, and pass it into state
 
@@ -128,7 +128,7 @@ const SingleRecipe = ({ recipe, goBack, fromAPI, curr_ID }) => {
             <img className="mainIMG" src={recipe.images ? (recipe.images.LARGE ? recipe.images.LARGE.url : recipe.images.REGULAR.url) : recipe.imgUrl}></img>
             <div className="top-part">
                 <h1 className="recipeLabel">{recipe.label ? recipe.label : recipe.recipename}</h1>
-                <h2 className="rating">{fromAPI ? "" : <FaStar fontSize={25} />} {fromAPI ? "" : cartRate} {/*<Rating curr_ID = {recipe._id} updateRate={setRating} currentRate={rating}/>*/}</h2>
+                <h2 className="rating">{fromAPI ? "" : <FaStar fontSize={25} />} {fromAPI ? "" : recipe.ratingAverage} {/*<Rating curr_ID = {recipe._id} updateRate={setRating} currentRate={rating}/>*/}</h2>
                 <div className="informations">
                     <p className="recipeAuthor">Author: {recipe.source ? recipe.source : recipe.author}</p>
                     <hr className="test"></hr>
@@ -139,16 +139,22 @@ const SingleRecipe = ({ recipe, goBack, fromAPI, curr_ID }) => {
                     <p className="mealType">Meal type: {recipe.mealType}</p>
                     <hr className="test"></hr>
                     <p className="prepTime">Preparation time: {recipe.totalTime ? recipe.totalTime : recipe.preparationtime} hour</p>
-                    <p className="ingredients">Ingredients: {recipe.ingredientLines ? recipe.ingredientLines.length : "X"}</p>
 
                 </div>
             </div>
 
             <hr className="main-bar"></hr>
-            <div className="ingredientsDetails">
-                <h1>Ingredients:</h1>
-                <ol>{recipe.ingredientLines ? (recipe.ingredientLines && recipe.ingredientLines.map((step, i) =>
-                    (<li>{step}</li>))) : (recipe.ingredients && recipe.ingredients.map((step, i) => (<li>{step}</li>)))}</ol>
+            <div className="recipeInstructions">
+                <div className="ingredientsDetails">
+                    <h1>Ingredients:</h1>
+                    <ol>{recipe.ingredientLines ? (recipe.ingredientLines && recipe.ingredientLines.map((step, i) =>
+                        (<li>{step}</li>))) : (recipe.ingredients && recipe.ingredients.map((step, i) => (<li>{step}</li>)))}</ol>
+                </div>
+                <hr></hr>
+                <div className="directionsDetails">
+                    <h1 className="recDirections">Directions:</h1>
+                    {recipe.directions ? recipe.directions : ""}
+                </div>
             </div>
             <hr className="main-bar"></hr>
             <div className="globalInfo">
@@ -165,7 +171,7 @@ const SingleRecipe = ({ recipe, goBack, fromAPI, curr_ID }) => {
             </div>
             {/*<p>{login.user && temp ? <Rating curr_ID = {recipe._id} updateRate={setRating} currentRate={rating} setDone={setTemp} confirm={setRatingDone}/> : ""}</p>*/}
             <p>{temp ? <div>{login.user ? <Rating curr_recipe={recipe} curr_ID={recipe._id} updateRate={setRating} currentRate={rating} setDone={setTemp} confirm={setRatingDone}
-                currentUser={login.user} currentUserID={login.id} updateCartRate={setCartRate} /> : <Link to="Login">Please login</Link>}</div> : ""}</p>
+                currentUser={login.user} currentUserID={login.id} updateCartRate={setCartRate} reGetRecipes={() => reGetRecipes()} /> : <Link to="Login">Please login</Link>}</div> : ""}</p>
             <p>{temp2 ? <div>{login.user ? "Saved" : <Link to="Login">Please login</Link>}</div> : ""}</p>
             <p>{ratingDone ? "DONE" : ""}</p>
             <div className="ratingsAndComments">

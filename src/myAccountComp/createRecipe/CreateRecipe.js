@@ -143,6 +143,11 @@ const CreateRecipe = () => {
 
 
         </select>
+        <ul>{ingredients && ingredients.map(
+          (ingr, i) => (
+            <li key={i}>{ingr}</li>
+          ))}
+        </ul>
         <label className="label">ingredients:</label>
         <div className="ingredient">
           <input
@@ -152,11 +157,7 @@ const CreateRecipe = () => {
           ></input>
           <button type="button" onClick={addingredient}>add ingredient</button>
         </div>
-        <ul>{ingredients && ingredients.map(
-          (ingr, i) => (
-            <li key={i}>{ingr}</li>
-          ))}
-        </ul>
+
 
         <label className="label">mealType:</label>
         <select
@@ -171,7 +172,7 @@ const CreateRecipe = () => {
 
         <label className="label">Cuisine type:</label>
         <select
-          value={mealType}
+          value={cuisineType}
           onChange={(e) => setCuisineType(e.target.value)}
         >
           <option value="American">American</option>

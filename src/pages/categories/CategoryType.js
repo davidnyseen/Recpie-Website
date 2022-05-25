@@ -4,7 +4,10 @@ import fetchGet from '../../utils/fetchGet'
 import fetchPost from '../../utils/fetchPost';
 import { useParams } from "react-router-dom";
 import HomeBody from "../../components/homeBody/HomeBody";
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import Popup from '../../components/Popup/Popup';
+import SingleRecipe from "../singleRecipe/SingleRecipe";
+
 
 
 
@@ -17,12 +20,19 @@ const CategoryType = () => {
     const [displaySingle, setDisplaySingle] = useState(false);
     const [currentIndex, setIndex] = useState(-1);
     const [fromAPIPopup, setFromAPIPopup] = useState(false);
+    const [recRecipePopup, setRecRecipePopup] = useState(false);
+
 
 
     const [isOpen, setIsOpen] = useState(false);
 
     const togglePopup = () => {
         setIsOpen(!isOpen);
+    }
+
+    function setBack() {
+        setDisplaySingle(false);
+        togglePopup();
       }
 
 
@@ -58,9 +68,18 @@ const CategoryType = () => {
                             handleClick={setDisplaySingle}
                             updateIndex={setIndex}
                             triggerPopup={togglePopup}
-                            setFromAPIPopup={setFromAPIPopup} />
+                            setFromAPIPopup={setFromAPIPopup}
+                            setRecRecipePopup={() => setRecRecipePopup(true)}
+                            />
+
                     ))}
                 </div>
+                {isOpen && <Popup
+                    content={<>
+                        <SingleRecipe recipe={result[currentIndex]} goBack={setBack} fromAPI={false} reGetRecipes={getCategory}></SingleRecipe>
+                    </>}
+                    handleClose={togglePopup}
+                />}
             </div>
         </div>
     );

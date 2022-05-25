@@ -8,7 +8,7 @@ import { useRef } from "react";
 import { getRecipes } from "../../store/homeReducer";
 
 
-const Rate = ({ curr_recipe, curr_ID, updateRate, currentRate, setDone, confirm, currentUser, currentUserID, updateCartRate }) => {
+const Rate = ({ curr_recipe, curr_ID, updateRate, currentRate, setDone, confirm, currentUser, currentUserID, updateCartRate, reGetRecipes }) => {
   const [rate, setRate] = useState(0);
   //console.log(curr_ID);
   const dispatch = useDispatch();
@@ -96,6 +96,9 @@ const Rate = ({ curr_recipe, curr_ID, updateRate, currentRate, setDone, confirm,
     object.id = currentUserID;
     object.comment = directions;
     submitRateToServer(object);
+    confirm(true);
+    setDone(false);
+    reGetRecipes();
   }
 
 

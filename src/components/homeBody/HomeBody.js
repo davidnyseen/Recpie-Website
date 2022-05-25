@@ -15,7 +15,7 @@ import { useState, useEffect } from 'react'
 
 
 
-const HomeBody = ({ index, image, label, dishType, recipe, handleClick, updateIndex, triggerPopup, fromAPI, setFromAPIPopup }) => {
+const HomeBody = ({ index, image, label, dishType, recipe, handleClick, updateIndex, triggerPopup, fromAPI, setFromAPIPopup, setRecRecipePopup }) => {
   let navigate = useNavigate(); // like href
   function goToSinglePage() {
     navigate(`/singlerecipe/${index}`);
@@ -30,6 +30,7 @@ const HomeBody = ({ index, image, label, dishType, recipe, handleClick, updateIn
     updateIndex(index);
     triggerPopup();
     setFromAPIPopup(fromAPI);
+    setRecRecipePopup();
     //dispatchEvent(updateRate(10));
   }
   //console.log(recipe);
@@ -82,7 +83,7 @@ const HomeBody = ({ index, image, label, dishType, recipe, handleClick, updateIn
                 <p>Cuisine type: {recipe.cuisineType ? recipe.cuisineType : ""}</p>
                 <p>Meal type: {recipe.mealType}</p>
                 <p>Author: { recipe.author ? recipe.author : recipe.source}</p>
-                <p className="ratingSec">{fromAPI ? "" : <FaStar fontSize={25} />}{fromAPI ? "" : cartRate}</p>
+                <p className="ratingSec">{fromAPI ? "" : <FaStar fontSize={25} />}{fromAPI ? "" : recipe.ratingAverage}</p>
               </Typography>
             </CardContent>
           </CardActionArea>

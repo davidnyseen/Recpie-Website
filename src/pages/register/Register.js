@@ -10,6 +10,8 @@ const Register = () => {
   const { signup } = useSelector((state) => state.signup);
   const { login } = useSelector((state) => state.login);
 
+  console.log(signup);
+
   let navigate = useNavigate(); // like href
   const [name, setname] = useState("");
   const [emailRes, setEmailRes] = useState("");
@@ -26,6 +28,7 @@ const Register = () => {
   }, [])
   const handleClick = (e) => {
     e.preventDefault();
+    console.log(emailRes);
     dispatch(getSignup({ emailRes, passwordRes, name }))
 
   }
