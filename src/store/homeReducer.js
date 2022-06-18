@@ -3,7 +3,7 @@ import  fetchPost  from '../utils/fetchPost';
 export const getRecipes = createAsyncThunk(
   "recipes/getRecipes",
   async (value) => {
-   return fetchPost('http://localhost:5000', value)
+   return fetchPost(process.env.REACT_APP_HEROKU_URL, value)
         .then(res => res.json())
         .then((res) => (res))
         .catch(err => (console.log("error getting recipes in home. err msg: "+ err.message)))

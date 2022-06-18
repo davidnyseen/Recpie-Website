@@ -6,7 +6,7 @@ export const getSignup = createAsyncThunk(
   "signup/getSignup",
   async (value) => {
 
-    return fetch('http://localhost:5000/signup', {
+    return fetch(process.env.REACT_APP_HEROKU_URL+'/signup', {
       method: 'post',
       headers: {
         'Accept': 'application/json',

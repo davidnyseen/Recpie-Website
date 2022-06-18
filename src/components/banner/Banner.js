@@ -13,7 +13,7 @@ export default function App() {
 
   async function  handlelogout(e){
     try {
-      const res = await fetch('http://localhost:5000/logout')
+      const res = await fetch(process.env.REACT_APP_HEROKU_URL+'/logout')
       const data = await res.json();
       if (data) {
         dispatch(loginValue({}));

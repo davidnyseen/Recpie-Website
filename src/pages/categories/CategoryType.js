@@ -41,7 +41,7 @@ const CategoryType = () => {
     const [result, setResult] = useState([]);
 
     function getCategory(cat, func) {
-        fetchPost('http://localhost:5000/getCategory', cat)
+        fetchPost(process.env.REACT_APP_HEROKU_URL+'/getCategory', cat)
             .then(res => res.json())
             .then((res) => (
                 //console.log(res);

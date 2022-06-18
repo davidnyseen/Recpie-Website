@@ -21,11 +21,8 @@ const MyUploads = () => {
 
     useEffect(() => {
         let cancel = false;
-        fetchGet('https://recipe-website-server.herokuapp.com/myAccount/myUploads')
+        fetchGet(process.env.REACT_APP_HEROKU_URL+'/myAccount/myUploads')
             .then((res) => {
-                if(!res){
-                    return;
-                }
                 if (cancel) return;
                 setRecipes([...res]);
                 console.log(recipes);
@@ -37,7 +34,7 @@ const MyUploads = () => {
 
     function getUploads() {
         let cancel = false;
-        fetchGet('http://localhost:5000/myAccount/myUploads')
+        fetchGet(process.env.REACT_APP_HEROKU_URL+'/myAccount/myUploads')
             .then((res) => {
                 if (cancel) return;
                 setRecipes([...res]);

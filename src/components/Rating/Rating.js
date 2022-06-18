@@ -27,7 +27,7 @@ const Rate = ({ curr_recipe, curr_ID, updateRate, currentRate, setDone, confirm,
     const rateValue = JSON.stringify({ userRating, curr_ID });
     console.log(userRating);
 
-    fetch('http://localhost:5000/submitRating', {
+    fetch(process.env.REACT_APP_HEROKU_URL+'/submitRating', {
       method: 'post',
       credentials: 'include',
       headers: {

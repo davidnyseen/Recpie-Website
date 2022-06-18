@@ -10,7 +10,7 @@ import  fetchPost  from './fetchPost';
 // declare which API requests to mock
 const server = setupServer(
     // capture "GET /greeting" requests
-    rest.post('http://localhost:5000', (req, res, ctx) => {
+    rest.post(process.env.REACT_APP_HEROKU_URL, (req, res, ctx) => {
       // respond using a mocked JSON body
       if(req.body.value === 'pizza'){
         return res(ctx.json({greeting: 'hello there'}))
@@ -33,7 +33,7 @@ const server = setupServer(
      // arrange
     const value = 'pizza';
     // act
-      const res = await fetchPost('http://localhost:5000',value);
+      const res = await fetchPost(process.env.REACT_APP_HEROKU_URL, value);
     // assert
       expect(res.status).toEqual(200)
     })

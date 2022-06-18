@@ -21,7 +21,7 @@ const SavedRecipes = () => {
 
     useEffect(() => {
         let cancel = false;
-        fetchGet('http://localhost:5000/myAccount/savedRecipes')
+        fetchGet(process.env.REACT_APP_HEROKU_URL+'/myAccount/savedRecipes')
             .then((res) => {
                 if (cancel) return;
                 if(res) setRecipes([...res]);
@@ -33,7 +33,7 @@ const SavedRecipes = () => {
 
     function getSavedRecipes() {
         let cancel = false;
-        fetchGet('http://localhost:5000/myAccount/savedRecipes')
+        fetchGet(process.env.REACT_APP_HEROKU_URL+'/myAccount/savedRecipes')
             .then((res) => {
                 if (cancel) return;
                 setRecipes([...res]);

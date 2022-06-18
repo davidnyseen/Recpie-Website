@@ -58,7 +58,7 @@ const CreateRecipe = () => {
         mealType, cuisineType, directions, preprationtime, login
       });
 
-      fetch('http://localhost:5000/submitNewRecipe', {
+      fetch(process.env.REACT_APP_HEROKU_URL+'/submitNewRecipe', {
         method: 'post',
         credentials: 'include',
         headers: {
@@ -85,7 +85,7 @@ const CreateRecipe = () => {
     e.preventDefault();
     formData.append('image', file);
     
-    const url = await  fetch('http://localhost:5000/submitNewImage', {
+    const url = await  fetch(process.env.REACT_APP_HEROKU_URL+'/submitNewImage', {
       method: 'post',
       credentials: 'include',
       headers: {

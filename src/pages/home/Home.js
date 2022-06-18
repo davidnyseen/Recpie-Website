@@ -28,7 +28,6 @@ const Home = () => {
   const { value } = useSelector((state) => state.searchReducer);
   const [searchResult, setSearchResult] = useState("");
   const { login } = useSelector((state) => state.login);
-  console.log(login);
 
   //TEST
   const recipesUser = useSelector((state) => state.recipes); //NO SOGRAIM
@@ -44,6 +43,8 @@ const Home = () => {
     //if(!login){ // getrecipes only if login state is false.
     console.log("Dispatching");
     dispatch(getRecipes(value)); // 
+    console.log(process.env.REACT_APP_HEROKU_URL);
+
     //}
   }, [value]);
 
@@ -123,7 +124,7 @@ const Home = () => {
 
     const sentValue = JSON.stringify({ currUsrID });
 
-    fetch('http://localhost:5000/getRecommended', {
+    fetch(process.env.REACT_APP_HEROKU_URL+'/getRecommended', {
       method: 'post',
       credentials: 'include',
       headers: {
@@ -161,7 +162,7 @@ const Home = () => {
       const sentValue = JSON.stringify({ currUsrID });
 
 
-      fetch('http://localhost:5000/getFormStatus', {
+      fetch(process.env.REACT_APP_HEROKU_URL+'/getFormStatus', {
         method: 'post',
         credentials: 'include',
         headers: {

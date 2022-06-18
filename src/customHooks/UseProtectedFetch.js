@@ -15,7 +15,7 @@ const UseProtectedFetch = () => {
     }, [])
         const func = async () => {
             try {
-                const res = await fetch('http://localhost:5000/protctedroute',
+                const res = await fetch(process.env.REACT_APP_HEROKU_URL+'/protctedroute',
                     { credentials: 'include', })
                 const data = await res.json();
                 // console.log('in handlelogout: = ' + data)

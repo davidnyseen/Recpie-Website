@@ -27,7 +27,7 @@ const RecForm = ({ closeRecommendationForm }) => {
 
         const sentValue = JSON.stringify({ value, curr_ID, preferences });
 
-        fetch('http://localhost:5000/setRecommendation', {
+        fetch(process.env.REACT_APP_HEROKU_URL+'/setRecommendation', {
             method: 'post',
             credentials: 'include',
             headers: {

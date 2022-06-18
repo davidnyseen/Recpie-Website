@@ -31,9 +31,7 @@ const HomeBody = ({ index, image, label, dishType, recipe, handleClick, updateIn
     triggerPopup();
     setFromAPIPopup(fromAPI);
     setRecRecipePopup();
-    //dispatchEvent(updateRate(10));
   }
-  //console.log(recipe);
 
   //ADDED SINCE 12/05/2022
 

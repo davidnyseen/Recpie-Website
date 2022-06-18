@@ -112,7 +112,7 @@ const SingleRecipe = ({ recipe, goBack, fromAPI, curr_ID, reGetRecipes }) => {
         setTemp(false);
         setTemp2(true);
         let value = recipe._id;
-        fetchPost("http://localhost:5000/saverecipe", value)
+        fetchPost(process.env.REACT_APP_HEROKU_URL+"/saverecipe", value)
             .then((res) => res.json())
             .then((res) => {
                 if (res) setSaved(true);

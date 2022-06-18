@@ -18,7 +18,7 @@ import  fetchPost  from './fetchPost';
 
 
     // act
-      const res = await fetchPost('http://localhost:5000',value);
+      const res = await fetchPost(process.env.REACT_APP_HEROKU_URL,value);
     // assert
       expect(res.status).toEqual(200)
     })
