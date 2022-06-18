@@ -21,8 +21,11 @@ const MyUploads = () => {
 
     useEffect(() => {
         let cancel = false;
-        fetchGet('http://localhost:5000/myAccount/myUploads')
+        fetchGet('https://recipe-website-server.herokuapp.com/myAccount/myUploads')
             .then((res) => {
+                if(!res){
+                    return;
+                }
                 if (cancel) return;
                 setRecipes([...res]);
                 console.log(recipes);

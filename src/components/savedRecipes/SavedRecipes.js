@@ -24,8 +24,7 @@ const SavedRecipes = () => {
         fetchGet('http://localhost:5000/myAccount/savedRecipes')
             .then((res) => {
                 if (cancel) return;
-                setRecipes([...res]);
-                console.log(recipes);
+                if(res) setRecipes([...res]);
             })
         return () => {
             cancel = true
