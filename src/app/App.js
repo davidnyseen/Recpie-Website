@@ -4,7 +4,7 @@ import './App.css';
 import Banner from '../components/banner/Banner';
 import Home from '../pages/home/Home';
 import MyAccount from "../pages/myAccount/MyAccount";
-import About from "../pages/about/About";
+import About from "../pages/about/about";
 import Categories from "../pages/categories/Categories";
 import NotFound from "../pages/notFound/NotFound";
 import SingleRecipe from "../pages/singleRecipe/SingleRecipe";

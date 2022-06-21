@@ -235,16 +235,8 @@ const Home = () => {
             />
           )) : <div className='APIServersError'><h2>"EDAMAM SERVERS ARE NOT AVAILABLE FOR NOW. PLEASE TRY LATER"</h2></div>}
         </div>
-        {/*{isOpen && <Popup
-          content={<>{fromAPIPopup ?
-            <SingleRecipe recipe={recipes[currentIndex].recipe} goBack={setBack} fromAPI={true}></SingleRecipe>
-            :
-            <SingleRecipe recipe={recipesUser.recipesDb[currentIndex]} goBack={setBack} fromAPI={false}></SingleRecipe>}
-          </>}
-          handleClose={togglePopup}
-          />}*/}
 
-        <h1>RECOMMENDED RECIPES</h1>
+        {/*<h1>RECOMMENDED RECIPES</h1>
 
         <div className="RecommendedRecipes">
           {login.id ?
@@ -263,13 +255,7 @@ const Home = () => {
             )) :
               <Popup content={<><RecForm closeRecommendationForm={closeRecommendationForm} /></>}></Popup>}
             </div> : ""}
-        </div>
-        {/*{isOpen && <Popup
-          content={<>
-            <SingleRecipe recipe={recStatus.recommendedRecipes[currentIndex]} goBack={setBack} fromAPI={false}></SingleRecipe>
-          </>}
-          handleClose={togglePopup}
-          />}*/}
+            </div>*/}
 
         {isOpen && <Popup
           content={<>{!recRecipePopup ? <div> { fromAPIPopup ?
