@@ -152,7 +152,7 @@ const Home = () => {
       });
   }
 
-  useEffect(() => {
+ /* useEffect(() => {
     let currUsrID;
     console.log(login);
     if (login.id) {
@@ -194,7 +194,7 @@ const Home = () => {
         getRecommendedRecipes(currUsrID);
       }
     }
-  }, []);
+  }, []);*///RECOMMENDATION TEMPORARY DISABLED
 
   const [recRecipePopup, setRecRecipePopup] = useState(false);
 
